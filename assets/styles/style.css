@@ -119,7 +119,7 @@ header nav ul li a.active {
 
 @media (max-width: 767px) {
     .hero .hero-img {
-        margin-top: 40px;
+        margin-top: 80px;
     }
 }
 

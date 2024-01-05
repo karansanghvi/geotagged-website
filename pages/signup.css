@@ -1,0 +1,91 @@
+/* style.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.form {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #555;
+}
+
+.field-wrap {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  background: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #45a049;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-content {
+  margin-top: 20px;
+}
+
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tab {
+  display: inline-block;
+  margin: 0;
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px 4px 0 0;
+}
+
+.tab.active {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.forgot {
+  text-align: right;
+  margin-top: -10px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Add your custom styles here if needed */

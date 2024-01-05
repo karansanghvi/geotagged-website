@@ -214,4 +214,26 @@ header nav ul li a.active {
     }
 }
 
+/* FEATURED PRODUCTS - HOME PAGE */
+.featured-products {
+    margin-top: 50px;
+}
 
+.featured-products .grid-featured-products .featured-product-home {
+    width: 250px;
+    height: 350px;
+}
+
+.featured-products .featured-products-text {
+    background-color: hsla(12, 98%, 52%, 0.1);
+    color: hsl(12, 98%, 52%);
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin-right: 380px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+    margin-left: 220px;
+}

@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
+
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         body {
             display: grid;
@@ -12,7 +16,8 @@
             grid-template-rows: auto 1fr auto;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
         }
 
         header {
@@ -27,10 +32,11 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             padding: 20px;
+            background-color: #fff; /* Set background color to white */
         }
 
-        main img {
-            width: 100%;
+        img {
+            width: 500px;
             height: auto;
         }
 
@@ -55,33 +61,45 @@
             background-color: #333;
             color: white;
         }
-        .center {
-            margin-left: auto;
-            margin-right: auto;
-            table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+
+        .additional-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: white;
+            color: #333;
         }
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .additional-info i {
+            font-size: 24px;
+            margin-right: 5px;
         }
 
-        th {
-            background-color: #333;
-            color: white;
+        div {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            clear: both; /* Clear the float to ensure proper spacing */
         }
 
-        tbody tr:hover {
-            background-color: #f5f5f5;
-        }   
-}
+        div h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
 
+        div p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Add the following styles to create a gap between the paragraph and the image */
+        div img {
+            margin-top: 20px; /* Adjust this value based on the desired gap */
+            max-width: 100%; /* Ensure the image doesn't overflow its container */
+        }
     </style>
 </head>
 
@@ -91,447 +109,71 @@
     </header>
 
     <main>
-        <img src="hgk.png" alt="unable to open">
+        <img src="ABOUT US PHOTOES/WhatsApp Image 2024-01-04 at 11.06.03 PM.jpeg" alt="unable to open">
         <section class="important-section">
             <h2>What are Geographical Indicators?</h2>
             <p>
-                A geographical indication (GI) is a sign used on products that have a specific geographical 
-                origin and possess qualities or a reputation that are due to that origin. In order to function 
-                as a GI, a sign must identify a product as originating in a given place.
+                A geographical indication (GI) is a sign used on products that have a specific geographical origin
+                and possess qualities or a reputation that are due to that origin. In order to function as a GI, a sign
+                must identify a product as originating in a given place.
             </p>
-            <br>
-            <br>
-            <br>
 
             <h2>Why are they important?</h2>
             <p>
-                Geotagged products are important because they enable businesses to tailor their offerings based on 
-                specific geographical locations, allowing for targeted marketing, improved customer engagement, 
-                supply chain optimization, compliance with regulations, and enhanced security measures.
+                Geotagged products are important because they enable businesses to tailor their offerings based on
+                specific geographical locations, allowing for targeted marketing, improved customer engagement, supply
+                chain optimization, compliance with regulations, and enhanced security measures.
             </p>
         </section>
-        
-
     </main>
-    <table class="center" border="1">
-      <tbody>
-          <tr>
-              <td>
-                  <p style="text-align: center;"><strong>Indian State</strong></p>
-              </td>
-              <td>
-                  <p style="text-align: center;"><strong>GT Tags</strong></p>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Andhra Pradesh</span></td>
-              <td>
-                  <span style="font-weight: 400;">Srikalahasthi Kalamkari</span><br>
-                  <span style="font-weight: 400;">Kondapalli Bommallu</span><br>
-                  <span style="font-weight: 400;">Machilipatnam Kalamkari</span><br>
-                  <span style="font-weight: 400;">Budithi Bell &amp; Brass Metal Craft</span><br>
-                  <span style="font-weight: 400;">Andhra Pradesh Leather Puppetry</span><br>
-                  <span style="font-weight: 400;">Uppada Jamdani Sarees</span><br>
-                  <span style="font-weight: 400;">Venkatagiri Sarees</span><br>
-                  <span style="font-weight: 400;">Bobbili Veena</span><br>
-                  <span style="font-weight: 400;">Mangalagiri Sarees and Fabrics</span><br>
-                  <span style="font-weight: 400;">Guntur Sannam Chilli</span><br>
-                  <span style="font-weight: 400;">Araku Valley Arabica Coffee</span>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Arunachal Pradesh</span></td>
-              <td>
-                  <span style="font-weight: 400;">Idu Mishmi Textiles</span><br>
-                  <span style="font-weight: 400;">Arunachal Orange</span>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Assam</span></td>
-              <td>
-                  <span style="font-weight: 400;">Muga Silk of Assam</span><br>
-                  <span style="font-weight: 400;">Muga Silk of Assam (Logo)</span><br>
-                  <span style="font-weight: 400;"></span><br>
-                  <span style="font-weight: 400;">Assam Karbi Anglong Ginger</span><br>
-                  <span style="font-weight: 400;">Joha Rice of Assam</span><br>
-                  <span style="font-weight: 400;">Tezpur Litchi</span><br>
-                  <span style="font-weight: 400;">Boka Chaul</span><br>
-                  <span style="font-weight: 400;">Kaji Nemu</span>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Bihar</span></td>
-              <td>
-                  <span style="font-weight: 400;">Madhubani Paintings</span><br>
-                  <span style="font-weight: 400;">Applique (Khatwa) Work of Bihar</span><br>
-                  <span style="font-weight: 400;">Sujini Embroidery Work of Bihar</span><br>
-                  <span style="font-weight: 400;">Sikki Grass Products of Bihar</span><br>
-                  <span style="font-weight: 400;">Bhagalpur Silk</span><br>
-                  <span style="font-weight: 400;">Applique (Khatwa) Work of Bihar (Logo)</span>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Chhattisgarh</span></td>
-              <td>
-                  <span style="font-weight: 400;">Bastar Dhokra</span><br>
-                  <span style="font-weight: 400;">Bastar Wooden Craft</span><br>
-                  <span style="font-weight: 400;">Bastar Iron Craft</span>
-              </td>
-          </tr>
-          <tr>
-              <td><span style="font-weight: 400;">Goa</span></td>
-              <td>
-                  <span style="font-weight: 400;">Khola Chilli</span><br>
-                  <span style="font-weight: 400;">Feni</span>
-              </td>
-          </tr>
-          
-          <tr>
-            <td>
-                <span style="font-weight: 400;">Gujarat</span>
-            </td>
-            <td>
-                <p><span style="font-weight: 400;">Sankheda Furniture</span></p>
-                <p><span style="font-weight: 400;">Agates of Cambay</span></p>
-                <p><span style="font-weight: 400;">Kutch Embroidery</span></p>
-                <p><span style="font-weight: 400;">Tangaliya Shawl</span></p>
-                <p><span style="font-weight: 400;">Surat Zari Craft</span></p>
-                <p><span style="font-weight: 400;">Rajkot Patola</span></p>
-                <p><span style="font-weight: 400;">Pethapur Printing Blocks</span></p>
-                <p><span style="font-weight: 400;">Gir Kesar Mango</span></p>
-                <p><span style="font-weight: 400;">Bhalia Wheat</span></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span style="font-weight: 400;">Himachal Pradesh</span>
-            </td>
-            <td>
-                <p><span style="font-weight: 400;">Kullu Shawl</span></p>
-                <p><span style="font-weight: 400;">Kangra Tea</span></p>
-                <p><span style="font-weight: 400;">Chamba Rumal</span></p>
-                <p><span style="font-weight: 400;">Kinnauri Shawl</span></p>
-                <p><span style="font-weight: 400;">Kullu Shawl (Logo)</span></p>
-                <p><span style="font-weight: 400;">Kangra Paintings</span></p>
-                <p><span style="font-weight: 400;">Himachali Kala Zeera</span></p>
-                <p><span style="font-weight: 400;">Himachali Chulli Oil</span></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span style="font-weight: 400;">Jammu & Kashmir</span>
-            </td>
-            <td>
-                <p><span style="font-weight: 400;">Kani Shawl</span></p>
-                <p><span style="font-weight: 400;">Kashmir Pashmina</span></p>
-                <p><span style="font-weight: 400;">Kashmir Paper Machie</span></p>
-                <p><span style="font-weight: 400;">Kashmir Walnut Wood Carving</span></p>
-                <p><span style="font-weight: 400;">Khatamband</span></p>
-                <p><span style="font-weight: 400;">Kashmiri Hand Knotted Carpet</span></p>
-                <p><span style="font-weight: 400;">Saffron (Mongra, Lachha, Guchhi)</span></p>
-            </td>
-        </tr>
-        <tr>
-          <td>
-              <span style="font-weight: 400;">Jharkhand</span>
-          </td>
-          <td>
-              <p><span style="font-weight: 400;">Sohrai – Khovar Painting</span></p>
-          </td>
-      </tr>
-      <tr>
-          <td>
-              <span style="font-weight: 400;">Karnataka</span>
-          </td>
-          <td>
-              <p><span style="font-weight: 400;">Mysore Silk</span></p>
-              <p><span style="font-weight: 400;">Bidriware</span></p>
-              <p><span style="font-weight: 400;">Channapatna Toys & Dolls</span></p>
-              <p><span style="font-weight: 400;">Mysore Rosewood Inlay</span></p>
-              <p><span style="font-weight: 400;">Kasuti Embroidery</span></p>
-              <p><span style="font-weight: 400;">Mysore Traditional Paintings</span></p>
-              <p><span style="font-weight: 400;">Ilkal Sarees</span></p>
-              <p><span style="font-weight: 400;">Devanahalli Pomelo</span></p>
-              <p><span style="font-weight: 400;">Appemidi Mango</span></p>
-              <p><span style="font-weight: 400;">Kamalapur Red Banana</span></p>
-              <p><span style="font-weight: 400;">Bangalore Blue Grapes</span></p>
-              <p><span style="font-weight: 400;">Mysore Sandalwood Oil</span></p>
-              <p><span style="font-weight: 400;">Mysore Sandal soap</span></p>
-          </td>
-      </tr>
-      <tr>
-          <td>
-              <span style="font-weight: 400;">Kerala</span>
-          </td>
-          <td>
-              <p><span style="font-weight: 400;">Tirur Betel Leaf (Tirur Vettila)</span></p>
-              <p><span style="font-weight: 400;">Alleppey Coir</span></p>
-              <p><span style="font-weight: 400;">Navara Rice</span></p>
-              <p><span style="font-weight: 400;">Palakkadan Matta Rice</span></p>
-              <p><span style="font-weight: 400;">Alleppey Green Cardamom</span></p>
-              <p><span style="font-weight: 400;">Maddalam of Palakkad</span></p>
-              <p><span style="font-weight: 400;">Screw Pine Craft of Kerala</span></p>
-              <p><span style="font-weight: 400;">Brass Broidered Coconut Shell Crafts of Kerala</span></p>
-              <p><span style="font-weight: 400;">Pokkali Rice</span></p>
-              <p><span style="font-weight: 400;">Vazhakulam Pineapple</span></p>
-              <p><span style="font-weight: 400;">Cannanore Home Furnishings</span></p>
-              <p><span style="font-weight: 400;">Balaramapuram Sarees and Fine Cotton Fabrics</span></p>
-              <p><span style="font-weight: 400;">Kasaragod Sarees</span></p>
-              <p><span style="font-weight: 400;">Kuthampully Sarees</span></p>
-              <p><span style="font-weight: 400;">Central Travancore Jaggery</span></p>
-              <p><span style="font-weight: 400;">Wayanad Jeerakasala Rice A</span></p>
-              <p><span style="font-weight: 400;">Wayanad Gandhakasala Rice</span></p>
-              <p><span style="font-weight: 400;">Payyannur Pavithra Ring</span></p>
-              <p><span style="font-weight: 400;">Chendamangalam Dhoties & Set Mundu</span></p>
-              <p><span style="font-weight: 400;">Kaipad Rice</span></p>
-              <p><span style="font-weight: 400;">Chengalikodan Nendran Banana</span></p>
-              <p><span style="font-weight: 400;">Kuthampully Dhoties & Set Mundu</span></p>
-              <p><span style="font-weight: 400;">Maddalam of Palakkad (Logo)</span></p>
-              <p><span style="font-weight: 400;">Brass Broidered Coconut Shell Craft of Kerala (Logo)</span></p>
-              <p><span style="font-weight: 400;">Screw Pine Craft of Kerala (Logo)</span></p>
-              <p><span style="font-weight: 400;">Nilambur Teak</span></p>
-              <p><span style="font-weight: 400;">Wayanad Robusta Coffee</span></p>
-              <p><span style="font-weight: 400;">Marayoor Jaggery (Marayoor Sharkara)</span></p>
-          </td>
-      </tr>
 
-      <tr>
-        <td>
-            <span style="font-weight: 400;">Madhya Pradesh</span>
-        </td>
-        <td>
-            <p><span style="font-weight: 400;">Chanderi Sarees</span></p>
-            <p><span style="font-weight: 400;">Leather Toys of Indore</span></p>
-            <p><span style="font-weight: 400;">Bagh Prints of Madhya Pradesh</span></p>
-            <p><span style="font-weight: 400;">Bell Metal Ware of Datia and Tikamgarh</span></p>
-            <p><span style="font-weight: 400;">Maheshwar Sarees & Fabrics</span></p>
-            <p><span style="font-weight: 400;">Bell Metal Ware of Datia and Tikamgarh (Logo)</span></p>
-            <p><span style="font-weight: 400;">Leather Toys of Indore (Logo)</span></p>
-            <p><span style="font-weight: 400;">Ratlami Sev</span></p>
-            <p><span style="font-weight: 400;">Bagh Prints of Madhya Pradesh (Logo)</span></p>
-            <p><span style="font-weight: 400;">Jhabua Kadaknath Black Chicken Meat</span></p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <span style="font-weight: 400;">Maharashtra</span>
-        </td>
-        <td>
-            <p><span style="font-weight: 400;">Solapur Chaddar</span></p>
-            <p><span style="font-weight: 400;">Solapur Terry Towel</span></p>
-            <p><span style="font-weight: 400;">Puneri Pagadi</span></p>
-            <p><span style="font-weight: 400;">Nashik Valley Wine</span></p>
-            <p><span style="font-weight: 400;">Paithani Sarees and Fabrics</span></p>
-            <p><span style="font-weight: 400;">Mahabaleshwar Strawberry</span></p>
-            <p><span style="font-weight: 400;">Nashik Grapes</span></p>
-            <p><span style="font-weight: 400;">Kolhapur Jaggery</span></p>
-            <p><span style="font-weight: 400;">Ajara Ghansal Rice</span></p>
-            <p><span style="font-weight: 400;">Mangalwedha Jowar</span></p>
-            <p><span style="font-weight: 400;">Sindhudurg & Ratnagiri Kokum</span></p>
-            <p><span style="font-weight: 400;">Waghya Ghevada</span></p>
-            <p><span style="font-weight: 400;">Navapur Tur Dal</span></p>
-            <p><span style="font-weight: 400;">Vengurla Cashew</span></p>
-            <p><span style="font-weight: 400;">Lasalgaon Onion</span></p>
-            <p><span style="font-weight: 400;">Sangli Raisins</span></p>
-            <p><span style="font-weight: 400;">Beed Custard Apple</span></p>
-            <p><span style="font-weight: 400;">Jalna Sweet Orange</span></p>
-            <p><span style="font-weight: 400;">Waigaon Turmeric</span></p>
-            <p><span style="font-weight: 400;">Purandar Fig</span></p>
-            <p><span style="font-weight: 400;">Jalgaon Bharit Brinjal</span></p>
-            <p><span style="font-weight: 400;">Solapur Pomegranate</span></p>
-            <p><span style="font-weight: 400;">Bhiwapur Chil</span></p>
-            <p><span style="font-weight: 400;">Ambemohar Rice</span></p>
-            <p><span style="font-weight: 400;">Dahanu Gholvad Chikoo</span></p>
-            <p><span style="font-weight: 400;">Jalgaon Banana</span></p>
-            <p><span style="font-weight: 400;">Marathwada Kesar Mango</span></p>
-            <p><span style="font-weight: 400;">Karvath Kati Sarees & Fabrics</span></p>
-            <p><span style="font-weight: 400;">Alphonso</span></p>
-            <p><span style="font-weight: 400;">Sangli Turmeric</span></p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <span style="font-weight: 400;">Manipur</span>
-        </td>
-        <td>
-            <p><span style="font-weight: 400;">Shaphee Lanphee</span></p>
-            <p><span style="font-weight: 400;">Wangkhei Phee</span></p>
-            <p><span style="font-weight: 400;">Moirang Phee</span></p>
-            <p><span style="font-weight: 400;">Kachai Lemon</span></p>
-            <p><span style="font-weight: 400;">Chak-Hao</span></p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <span style="font-weight: 400;">Meghalaya</span>
-        </td>
-        <td>
-            <p><span style="font-weight: 400;">Khasi Mandarin</span></p>
-            <p><span style="font-weight: 400;">Memong Narang</span></p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <span style="font-weight: 400;">Mizoram</span>
-        </td>
-        <td>
-            <p><span style="font-weight: 400;">Mizo Chilli</span></p>
-            <p><span style="font-weight: 400;">Pawndum</span></p>
-            <p><span style="font-weight: 400;">Ngotekherh</span></p>
-            <p><span style="font-weight: 400;">Hmaram</span></p>
-            <p><span style="font-weight: 400;">Tawlhlohpuan</span></p>
-            <p><span style="font-weight: 400;">Mizo Puanchei</span></p>
-        </td>
-    </tr>
+    <div>
+        <img align="right" src="/ABOUT US PHOTOES/pexels-khalid-aljmman-7155435.jpg" alt="">
+        <h2 style="text-align: center;">OUR MISSION</h2>
+        <p>
+            We're dedicated to connecting the dots between skilled artisans in rustic landscapes and savvy consumers
+            looking for geotagged products that showcase the beauty of Indian art and culture. Our mission is clear:
+            boost rural economies by bringing authentic craftsmanship to niche buyers, all while championing and
+            preserving India's vibrant heritage. Join us in creating a marketplace where tradition and innovation blend
+            seamlessly, celebrating the essence of Indian culture in every purchase.
+        </p>
+    </div>
 
-    <tr>
-      <td>
-          <span style="font-weight: 400;">Nagaland</span>
-      </td>
-      <td>
-          <p><span style="font-weight: 400;">Naga Mircha</span></p>
-          <p><span style="font-weight: 400;">Naga Tree Tomato</span></p>
-          <p><span style="font-weight: 400;">Chakhesang Shawl</span></p>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <span style="font-weight: 400;">Odisha</span>
-      </td>
-      <td>
-          <p><span style="font-weight: 400;">Kotpad Handloom fabric</span></p>
-          <p><span style="font-weight: 400;">Orissa Ikat</span></p>
-          <p><span style="font-weight: 400;">Konark Stone carving</span></p>
-          <p><span style="font-weight: 400;">Orissa Pattachitra</span></p>
-          <p><span style="font-weight: 400;">Pipli Applique Work</span></p>
-          <p><span style="font-weight: 400;">Khandua Saree and Fabrics</span></p>
-          <p><span style="font-weight: 400;">Gopalpur Tussar Fabrics</span></p>
-          <p><span style="font-weight: 400;">Ganjam Kewda Rooh</span></p>
-          <p><span style="font-weight: 400;">Ganjam Kewda Flower</span></p>
-          <p><span style="font-weight: 400;">Dhalapathar Parda & Fabrics</span></p>
-          <p><span style="font-weight: 400;">Sambalpuri Bandha Saree & Fabrics</span></p>
-          <p><span style="font-weight: 400;">Bomkai Saree & Fabrics</span></p>
-          <p><span style="font-weight: 400;">Habaspuri Saree & Fabrics</span></p>
-          <p><span style="font-weight: 400;">Berhampur Patta (Phoda Kumbha) Saree & Joda</span></p>
-          <p><span style="font-weight: 400;">Orissa Pattachitra (Logo)</span></p>
-          <p><span style="font-weight: 400;">Kandhamal Haladi</span></p>
-          <p><span style="font-weight: 400;">Odisha Rasagola</span></p>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <span style="font-weight: 400;">Rajasthan</span>
-      </td>
-      <td>
-          <p><span style="font-weight: 400;">Kota Doria</span></p>
-          <p><span style="font-weight: 400;">Blue Pottery of Jaipur</span></p>
-          <p><span style="font-weight: 400;">Molela Clay Work</span></p>
-          <p><span style="font-weight: 400;">Kathputlis of Rajasthan</span></p>
-          <p><span style="font-weight: 400;">Bikaneri Bhujia</span></p>
-          <p><span style="font-weight: 400;">Kota Doria (Logo)</span></p>
-          <p><span style="font-weight: 400;">Bagru Hand Block Print</span></p>
-          <p><span style="font-weight: 400;">Thewa Art Work</span></p>
-          <p><span style="font-weight: 400;">Makrana Marble</span></p>
-          <p><span style="font-weight: 400;">Molela Clay Work of Rajasthan (Logo)</span></p>
-          <p><span style="font-weight: 400;">Blue Pottery of Jaipur</span></p>
-          <p><span style="font-weight: 400;">Kathputlis of Rajasthan</span></p>
-          <p><span style="font-weight: 400;">Pokaran Pottery</span></p>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <span style="font-weight: 400;">Tamil Nadu</span>
-      </td>
-      <td>
-          <p><span style="font-weight: 400;">Salem Fabric</span></p>
-          <p><span style="font-weight: 400;">Kancheepuram Silk</span></p>
-          <p><span style="font-weight: 400;">Thanjavur Art Plate</span></p>
-          <p><span style="font-weight: 400;">East India Leather</span></p>
-          <p><span style="font-weight: 400;">Salem Silk known as Salem Venpattu</span></p>
-          <p><span style="font-weight: 400;">Kovai Kora Cotton Sarees</span></p>
-          <p><span style="font-weight: 400;">Arani Silk</span></p>
-          <p><span style="font-weight: 400;">Swamimalai Bronze Icons</span></p>
-          <p><span style="font-weight: 400;">Eathamozhi Tall Coconut</span></p>
-          <p><span style="font-weight: 400;">Thanjavur Doll</span></p>
-          <p><span style="font-weight: 400;">Nilgiri (Orthodox)</span></p>
-          <p><span style="font-weight: 400;">Virupakshi Hill Banana</span></p>
-          <p><span style="font-weight: 400;">Sirumalai Hill Banana</span></p>
-          <p><span style="font-weight: 400;">Madurai Malli</span></p>
-          <p><span style="font-weight: 400;">Pattamadai Pai (“Pattamadai Mat”)</span></p>
-          <p><span style="font-weight: 400;">Nachiarkoil Kuthuvilakku (“Nachiarkoil Lamp”)</span></p>
-          <p><span style="font-weight: 400;">Chettinad Kottan</span></p>
-          <p><span style="font-weight: 400;">Toda Embroidery</span></p>
-          <p><span style="font-weight: 400;">Arumbavur Wood Carvings</span></p>
-      </td>
-  </tr>
-  <tr>
-    <td>
-        <span style="font-weight: 400;">Tripura</span>
-    </td>
-    <td>
-        <p><span style="font-weight: 400;">Tripura Queen Pineapple</span></p>
-    </td>
-</tr>
-<tr>
-    <td>
-        <span style="font-weight: 400;">Telangana</span>
-    </td>
-    <td>
-        <p><span style="font-weight: 400;">Pochampally Ikat</span></p>
-        <p><span style="font-weight: 400;">Silver Filigree of Karimnagar</span></p>
-        <p><span style="font-weight: 400;">Nirmal Toys and Craft</span></p>
-        <p><span style="font-weight: 400;">Nirmal Furniture</span></p>
-        <p><span style="font-weight: 400;">Nirmal Paintings</span></p>
-        <p><span style="font-weight: 400;">Gadwal Sarees</span></p>
-        <p><span style="font-weight: 400;">Telia Rumal</span></p>
-    </td>
-</tr>
-<tr>
-    <td>
-        <span style="font-weight: 400;">Uttar Pradesh</span>
-    </td>
-    <td>
-        <p><span style="font-weight: 400;">Allahabad Surkha Guava</span></p>
-        <p><span style="font-weight: 400;">Lucknow Chikan Craft</span></p>
-        <p><span style="font-weight: 400;">Malihabadi Dusseheri mango</span></p>
-        <p><span style="font-weight: 400;">Banaras Brocades and Sarees</span></p>
-        <p><span style="font-weight: 400;">Hand Made Carpet of Bhadohi</span></p>
-        <p><span style="font-weight: 400;">Agra Durrie</span></p>
-        <p><span style="font-weight: 400;">Farrukhabad Prints</span></p>
-        <p><span style="font-weight: 400;">Lucknow Zardozi</span></p>
-        <p><span style="font-weight: 400;">Banaras Brocades and Sarees (Logo)</span></p>
-        <p><span style="font-weight: 400;">Kalanamak Rice</span></p>
-        <p><span style="font-weight: 400;">Firozabad Glass</span></p>
-        <p><span style="font-weight: 400;">Kannauj Perfume</span></p>
-        <p><span style="font-weight: 400;">Kanpur Saddlery</span></p>
-        <p><span style="font-weight: 400;">Moradabad Metal Craft</span></p>
-    </td>
-</tr>
-<tr>
-    <td>
-        <span style="font-weight: 400;">West Bengal</span>
-    </td>
-    <td>
-        <p><span style="font-weight: 400;">Darjeeling Tea (word & logo)</span></p>
-        <p><span style="font-weight: 400;">Nakshi Kantha</span></p>
-        <p><span style="font-weight: 400;">Santiniketan Leather Goods</span></p>
-        <p><span style="font-weight: 400;">Malda Laxman Bhog Mango</span></p>
-        <p><span style="font-weight: 400;">Banglar Rasogolla</span></p>
-        <p><span style="font-weight: 400;">Bankura Panchmura Terracotta Craft</span></p>
-        <p><span style="font-weight: 400;">Bengal Patachitra</span></p>
-        <p><span style="font-weight: 400;">Purulia Chhau Mask</span></p>
-        <p><span style="font-weight: 400;">Wooden Mask of Kushmandi</span></p>
-        <p><span style="font-weight: 400;">Madur kathi</span></p>
-    </td>
-</tr>
-</tbody>
-</table>
- 
+    <div>
+        <img align="left" src="/ABOUT US PHOTOES/greenforce-staffing-bYZn_C-RswQ-unsplash.jpg" alt="">
 
-  
+        <h2 style="text-align: center;">Why Us?</h2>
+        <p>
+            Explore the richness of over 300 geotagged products on our platform, sourced authentically and crafted by
+            skilled artisans. Each item is meticulously handmade, ensuring originality and quality. Our unique selling
+            proposition lies in delivering global satisfaction through certified, handmade, and superior-quality
+            products, fostering the social and economic upliftment of our vendors. We provide assistance to artisans
+            in obtaining their GI licenses, contributing to the recognition of their unique creations. All products
+            listed on GI Heritage follow traditional processes, utilizing naturally occurring raw materials, making
+            each item eco-friendly and sustainable. Join us in not just enhancing today but shaping a more sustainable
+            tomorrow for the global community.
+        </p>
+
+    </div>
+
+    <div class="additional-info">
+        <div>
+            <i class="fas fa-sync-alt"></i> 15 Days Return
+        </div>
+        <div>
+            <i class="fas fa-headphones"></i> 24x7 Support
+        </div>
+        <div>
+            <i class="fas fa-globe"></i> 300+ Geotagged Products Available
+        </div>
+        <div class="free-shipping">
+            <i class="fas fa-shipping-fast"></i> Free Shipping
+        </div>
+    </div>
 
     <footer>
-        &copy; 2024  Geotagged. All rights reserved.
+        &copy; 2024 Geotagged. All rights reserved.
     </footer>
 </body>
+
 </html>

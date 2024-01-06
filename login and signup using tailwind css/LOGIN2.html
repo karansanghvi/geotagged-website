@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
+  <!-- Add a link to your desired font -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen font-sans">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <form action="" onsubmit="return validateForm()" class="text-center">
+      <h1 class="text-3xl font-bold mb-4">LOGIN</h1>
+      <div class="mb-4 flex items-center">
+        <i class='bx bxs-user-circle text-4xl mr-2'></i>
+        <input type="email" id="email" name="email" placeholder="Email" required
+               class="mt-1 p-2 w-full border rounded-full">
+      </div>
+      <div class="mb-4 flex items-center">
+        <i class='bx bxs-lock-alt text-4xl mr-2'></i>
+        <input type="password" id="password" name="password" placeholder="Password" required
+               class="mt-1 p-2 w-full border rounded-full">
+      </div>
+      <div class="mb-4 flex items-center justify-between">
+        <label for="remember" class="text-sm">Remember me</label>
+        <input type="checkbox" id="remember" class="ml-2">
+      </div>
+      <a href="#" class="text-blue-500 text-sm mb-4">Forgot password?</a>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded-full w-full">Login</button>
+      <div class="mt-4">
+        <p class="text-sm">Don't have an account? <a href="signup.html" class="text-blue-500">Register</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

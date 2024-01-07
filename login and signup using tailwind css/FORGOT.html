@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+
+<div class="flex items-center justify-center h-screen">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-4 text-center">Forgot Password</h1>
+    
+    <form action="#" method="post" onsubmit="return validateForm()">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-600">Email Address</label>
+        <input type="email" name="email" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded-full w-full">Reset Password</button>
+    </form>
+
+    <p class="mt-4 text-sm">Remember your password? <a href="login.html" class="text-blue-500">Login</a></p>
+  </div>
+</div>
+
+<script>
+  function validateForm() {
+    const email = document.querySelector('input[name="email"]').value.trim();
+
+    // Validate email using a simple regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Invalid Email Address');
+      return false;
+    }
+
+
+       return true;
+  }
+</script>
+
+</body>
+</html>

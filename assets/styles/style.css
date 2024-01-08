@@ -287,6 +287,7 @@ del {
     }
 }
 
+/* subscribe */
 .subscribe {
     margin-top: 60px;
     background-color: hsl(12, 98%, 52%);
@@ -329,6 +330,12 @@ del {
     margin-left: 30px;
     border: white;
     border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+
+.subscribe .grid-subscribe .subscribe-input::placeholder {
+    color: black; 
 }
 
 .subscribe .grid-subscribe .subscribe-submit {
@@ -359,6 +366,23 @@ del {
     height: 20px;
     border: 2px solid white; 
     border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .subscribe {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .subscribe .grid-subscribe {
+        flex-direction: column;
+    }
+
+    .subscribe .grid-subscribe .subscribe-input {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
 }
 
 /* footer */
@@ -403,4 +427,26 @@ del {
     justify-content: center;
     text-align: center;
     font-size: large;
+}
+
+@media only screen and (max-width: 767px) {
+    .footer .grid-footer {
+        grid-template-columns: 1fr;
+        padding-left: 20px; 
+        padding-right: 20px;
+    }
+
+    .footer .grid-footer .footer-pages {
+        flex-direction: column;
+    }
+
+    .footer .grid-footer .footer-pages a {
+        margin-right: 0; 
+        margin-bottom: 10px; 
+    }
+
+    .footer .footer-divider {
+        margin-left: 20px; 
+        margin-right: 20px; 
+    }
 }

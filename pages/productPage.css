@@ -30,8 +30,8 @@ body{
 
 .productSelectedImage{
     background-color: black;
-    height: 500px;
-    width: 300px;
+    height: 700px;
+    width: 500px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -39,6 +39,24 @@ body{
 .productRatingsBox{
     display: flex;
     gap: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.productRatingsBox::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    border-bottom: 1px solid #000;
+    margin-top: 10px; 
+    padding-top: 50px;
+}
+
+
+.productRatingsCount > a{
+    text-decoration: none;
 }
 
 .productInfo{
@@ -49,5 +67,54 @@ body{
 
 .productDescription{
     padding: 10px;
+    max-width: 600px;
 }
 
+.productPrice{
+    display: flex;
+    gap: 30px;
+    margin: 10px 0px;
+
+}
+
+.productTitle{
+    font-size: 35px;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    max-width: 500px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.productPriceDiscountPercent{
+    color: rgb(237, 62, 62);
+    font-size: 30px;
+}
+
+.productCurrentPrice{
+    font-size: 30px;
+}
+
+.productMRP{
+    font-size: 15px;
+    color: rgb(116, 116, 116);
+    margin-bottom: 10px;
+}
+
+.productOriginalPrice{
+    text-decoration: line-through;
+}
+
+.productTaxInclusive{
+    margin-top: 10px;
+}
+
+.productTaxInclusive::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    border-bottom: 1px solid #000;
+    margin-top: 10px; 
+}

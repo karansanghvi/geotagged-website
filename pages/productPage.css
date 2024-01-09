@@ -1,0 +1,53 @@
+body{
+    background-color: aliceblue;
+}
+
+
+.productImages{
+    display: flex;
+    gap: 30px;
+}
+
+.productImagesColumn{
+    height: 500px;
+    width: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.productImage{
+    background-color: black;
+    height: 70px;
+    width: 50px;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.productSelectedImage{
+    background-color: black;
+    height: 500px;
+    width: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.productRatingsBox{
+    display: flex;
+    gap: 30px;
+}
+
+.productInfo{
+    display: flex;
+    gap: 100px;
+    padding: 10px;
+}
+
+.productDescription{
+    padding: 10px;
+}
+

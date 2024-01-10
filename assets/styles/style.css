@@ -173,6 +173,7 @@ header nav ul li a.active {
     width: 400px;
     height: 500px;
     border-radius: 15px;
+    box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
 }
 
 .about-us .grid-container .about-info {
@@ -223,6 +224,7 @@ header nav ul li a.active {
     width: 250px;
     height: 350px;
     border-radius: 15px;
+    box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
 }
 
 .featured-products .featured-products-text {
@@ -294,6 +296,7 @@ del {
     margin-right: 160px;
     margin-left: 160px;
     border-radius: 15px;
+    box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
 }
 
 .subscribe .subscribe-heading {

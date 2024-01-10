@@ -129,6 +129,10 @@ header nav ul li a.active {
     }
 }
 
+.signup-box {
+    box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
+}
+
 .signup-button {
     color: white;
     background-color: hsl(12, 98%, 52%);

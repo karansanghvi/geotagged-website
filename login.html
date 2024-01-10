@@ -7,9 +7,48 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">  
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles/login.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<div class="flex items-center justify-center h-screen font-sans">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+<body>
+  <header>
+    <div class="logo">
+      <img src="./assets/images/logo.png" alt="">
+      <h2 style="font-size: 25px; font-weight:bolder;">GeoInsight</h2>
+    </div>
+    <input type="checkbox" id="nav_check" hidden>
+    <nav>
+        <ul>
+            <li>
+                <a href="index.html" class="active">Home</a>
+            </li>
+            <li>
+                <a href="aboutus.html">About Us</a>
+            </li>
+            <li>
+              <a href="">Products</a>
+            </li>
+            <li>
+              <a href="">Contact Us</a>
+            </li>
+            <li>
+              <a href="">Login</a>
+            </li>
+            <li>
+              <a href="" class="header-button">My Cart</a>
+            </li>
+        </ul>
+    </nav>
+    <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </label>
+</header>
+  <div class="flex items-center justify-center h-screen font-sans">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-60">
         <form action="" onsubmit="return validateForm()" class="text-center">
           <h1 class="text-3xl font-bold mb-4">LOGIN</h1>
           <div class="mb-4 flex items-center">
@@ -27,12 +66,31 @@
             <input type="checkbox" id="remember" class="ml-2">
           </div>
           <a href="FORGOT.html" class="text-blue-500 text-sm mb-4">Forgot password?</a>
-          <button type="submit" class="bg-blue-500 text-white p-2 rounded-full w-full">Login</button>
+          <br>
+          <button type="submit" class="login-button">Login</button>
           <div class="mt-4">
-            <p class="text-sm">Don't have an account? <a href="signup2.html" class="text-blue-500">Register</a></p>
+            <p class="text-sm">Don't have an account? <a href="signup.html" class="text-blue-500">Register</a></p>
           </div>
         </form>
     </div>
+</div>
+<!-- footer -->
+<div class="footer">
+  <div class="grid-footer">
+    <div>
+      <h1 style="font-size: 25px; font-weight:bolder;">GeoInsight</h1>
+    </div>
+    <div class="footer-pages">
+      <a href="">Home</a>
+      <a href="">About Us</a>
+      <a href="">Products</a>
+      <a href="">Contact Us</a>
+      <a href="">Login</a>
+      <a href="">My Cart</a>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <h2 class="footer-copyright">&copy; 2024 GeoInsight. All Rights Reserved.</h2>
 </div>
   <script src="login.js"></script>
 </body>

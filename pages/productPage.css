@@ -51,7 +51,6 @@ body{
     width: 100%; 
     border-bottom: 1px solid #000;
     margin-top: 10px; 
-    padding-top: 50px;
 }
 
 
@@ -74,7 +73,6 @@ body{
     display: flex;
     gap: 30px;
     margin: 10px 0px;
-
 }
 
 .productTitle{
@@ -84,6 +82,11 @@ body{
     max-width: 500px;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+
+.productPrices{
+    position: relative;
 }
 
 .productPriceDiscountPercent{
@@ -107,9 +110,11 @@ body{
 
 .productTaxInclusive{
     margin-top: 10px;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-.productTaxInclusive::after {
+.productPrices::after {
     content: '';
     position: absolute;
     bottom: 0; 
@@ -117,4 +122,30 @@ body{
     width: 100%; 
     border-bottom: 1px solid #000;
     margin-top: 10px; 
+}
+
+.productAvailableSize{
+    margin-top: 10px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sizeTitle{
+    font-size: 20px;
+    position: relative;
+}
+
+.sizeDropdown{
+    font-size: 15px;
+    position: relative;
+}
+
+.productAvailableSize::after{
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    border-bottom: 1px solid #000;
+    margin-top: 10px;
 }

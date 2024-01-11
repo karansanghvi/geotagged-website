@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_SESSION['userPassword'] = $userData[5];
         echo '<script>alert("login successful")</script>';
         header("location: ../pages/signup.php");
-
     }
 }
 ?>

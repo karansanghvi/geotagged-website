@@ -9,8 +9,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('form').submit(function (e) {
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+          type: 'POST',
+          url: './backend/signupProcess.php',
+          data: formData,
+          success: function (response) {
+            if (response.error) {
+              $('#error-message').text(response.error);
+              // window.location.href = "login.html";
+            } else {
+              window.location.href = 'login.html';
+            }
+          },
+          error: function () {
+            console.error('AJAX request failed');
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
+
     <header>
         <div class="logo">
           <img src="./assets/images/logo.png" alt="">
@@ -45,53 +74,54 @@
             <div></div>
         </label>
     </header>
-<div class="flex items-center justify-center h-screen mt-10">
-  <div class="w-full max-w-md bg-white p-8 rounded-lg signup-box">
-    <h1 class="text-3xl font-bold mb-4 text-center">Sign Up</h1>
-    
-    <form action="/" method="post" onsubmit="return validateForm()">
-      <div class="mb-4 flex">
-        <div class="w-1/2 pr-2">
-          <label class="block text-sm font-medium text-gray-600">First Name</label>
-          <input type="text" name="first-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
-        </div>
-        <div class="w-1/2 pl-2">
-          <label class="block text-sm font-medium text-gray-600">Last Name</label>
-          <input type="text" name="last-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
-        </div>
-      </div>
 
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600">Email Address</label>
-        <input type="email" name="email" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
-      </div>
-
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600">Mobile Number</label>
-        <input type="tel" name="mobile-number" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
-      </div>
+  <div class="flex items-center justify-center h-screen mt-10">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg signup-box">
+      <h1 class="text-3xl font-bold mb-4 text-center">Sign Up</h1>
       
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600">Set Password</label>
-        <input type="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
-               title="Password must be at least 8 characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character."
-               autocomplete="off" class="mt-1 p-2 w-full border rounded">
-      </div>
+      <form action="./backend/signupProcess.php" method="POST" onsubmit="return validateForm()">
+        <div class="mb-4 flex">
+          <div class="w-1/2 pr-2">
+            <label class="block text-sm font-medium text-gray-600">First Name</label>
+            <input type="text" name="first-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
+          </div>
+          <div class="w-1/2 pl-2">
+            <label class="block text-sm font-medium text-gray-600">Last Name</label>
+            <input type="text" name="last-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
+          </div>
+        </div>
 
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600">Confirm Password</label>
-        <input type="password" name="confirm-password" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
-      </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Email Address</label>
+          <input type="email" name="email" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
 
-      <div class="center-button">
-        <button type="submit" class="signup-button">Get Started</button>
-      </div>
-    </form>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Mobile Number</label>
+          <input type="tel" name="mobile-number" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+        
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Set Password</label>
+          <input type="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                title="Password must be at least 8 characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character."
+                autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Confirm Password</label>
+          <input type="password" name="confirm-password" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+        <p id="error-message" class="text-red-500"></p>
+        <div class="center-button">
+          <button type="submit" class="signup-button">Get Started</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
 <!-- footer -->
-<div class="footer">
+  <div class="footer">
     <div class="grid-footer">
       <div>
         <h1 style="font-size: 25px; font-weight:bolder;">GeoInsight</h1>
@@ -109,7 +139,7 @@
     <h2 class="footer-copyright">&copy; 2024 GeoInsight. All Rights Reserved.</h2>
   </div>
 
-<script>
+<!-- <script>
   function validateForm() {
     const firstName = document.querySelector('input[name="first-name"]').value.trim();
     const lastName = document.querySelector('input[name="last-name"]').value.trim();
@@ -150,7 +180,7 @@
     // If all validations pass, return true
     return true;
   }
-</script>
+</script> -->
 
 </body>
 </html>

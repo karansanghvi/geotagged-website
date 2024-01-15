@@ -10,6 +10,12 @@
     <h2>Select Categories:</h2>
 
     <form id="categoryForm">
+
+        <label>
+            <input type="checkbox" name="category" value="all" onchange="searchProducts()" id="allCategory" checked>
+            All
+        </label>
+
         <label>
             <input type="checkbox" name="category" value="heels" onchange="searchProducts()" checked>
             Heels

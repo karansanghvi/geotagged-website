@@ -9,6 +9,6 @@ function includeCategoryForm() {
         }
     };
     
-    categoryFormRequest.open('GET', 'SideBar/category.html', true);
+    categoryFormRequest.open('GET', '../SideBar/category.html', true);
     categoryFormRequest.send();
 }

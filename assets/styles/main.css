@@ -1,0 +1,33 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.productCard {
+    width: calc(33.33% - 20px);
+    height: auto;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 250px;
+    height: 125px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin: 5px 0;
+}
+
+.prevPrice {
+    text-decoration: line-through;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <link rel="stylesheet" href="../assets/styles/page.css">
+</head>
+<body>
+
+    <div id="categoryFormContainer"></div>
+    <div id="searchBarContainer"></div>
+    <div id="priceRangeContainer"></div>
+    <div class="products"></div>
+
+    <script src="../db/database.js"></script>
+    <script src="../FilterFunctions/searchBar.js"></script>
+    <script src="../FilterFunctions/categoryForm.js"></script>
+    <script src="../FilterFunctions/priceForm.js"></script>
+    <script src="../FilterFunctions/productDisplay.js"></script>
+    <script src="../FilterFunctions/searchProducts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            includeSearchBar();
+            includeCategoryForm();
+            includePriceRange();
+            searchProducts();
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', searchProducts);
+    </script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-.products {
+/* .products {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -18,10 +18,9 @@
     text-align: center;
 }
 
-.product img {
+.product-image {
     width: 250px;
-    height: 125px;
-    margin-bottom: 10px;
+    height: 350px;
 }
 
 .product p {
@@ -30,4 +29,4 @@
 
 .prevPrice {
     text-decoration: line-through;
-}
+} */

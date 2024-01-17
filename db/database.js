@@ -1,6 +1,6 @@
 const data = [
     {
-      img: "https://m.media-amazon.com/images/I/6125yAfsJKL._AC_UX575_.jpg",
+      img: "../assets/images/product_images/traditional_art/madhubani_art/1678953220188Ram -Sita.png",
       title: "Nike Air Monarch IV",
       star: '<span class="rating-star"></span>',
       reviews: "(123 reviews)",

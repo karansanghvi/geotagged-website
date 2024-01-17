@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+    <link rel="stylesheet" href="../assets/styles/category.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>GeoInsight | Category</title>
 </head>
 <body>
 
-    <h2>Select Categories:</h2>
+    <h2 class="category-title">Select Categories:</h2>
 
     <form id="categoryForm">
 
@@ -15,22 +20,22 @@
             <input type="checkbox" name="category" value="all" onchange="searchProducts()" id="allCategory" checked>
             All
         </label>
-
+        <br>
         <label>
             <input type="checkbox" name="category" value="heels" onchange="searchProducts()" checked>
             Heels
         </label>
-
+        <br>
         <label>
             <input type="checkbox" name="category" value="sneakers" onchange="searchProducts()" checked>
             Sneakers
         </label>
-
+        <br>
         <label>
             <input type="checkbox" name="category" value="flats" onchange="searchProducts()" checked>
             Flats
         </label>
-
+        <br>
         <label>
             <input type="checkbox" name="category" value="sandals" onchange="searchProducts()" checked>
             Sandals

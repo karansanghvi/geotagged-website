@@ -55,6 +55,9 @@
                         <div id="categoryFormContainer"></div>
                     </li>
                     <li>
+                        <div id="typeFormContainer"></div>
+                    </li>
+                    <li>
                         <div id="priceRangeContainer"></div>
                     </li>
                 </ul>
@@ -101,8 +104,10 @@
             includeSearchBar();
             includeCategoryForm();
             includePriceRange();
+            includeTypeForm();
             searchProducts();
         });
+        
 
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', searchProducts);

@@ -11,6 +11,7 @@
     <div id="categoryFormContainer"></div>
     <div id="searchBarContainer"></div>
     <div id="priceRangeContainer"></div>
+    <div id="typeFormContainer"></div>
     <div class="products"></div>
 
     <script src="./db/database.js"></script>
@@ -25,7 +26,7 @@
                     <h3>${product.title}</h3>
                     <p class="prevPrice">${product.prevPrice}</p>
                     <p>${product.newPrice}</p>
-                    <p>Catgeory: ${product.categoxry}</p>
+                    <p style="transparent;">Catgeory: ${product.category}</p>
                     <p>Type: ${product.type}</p>
                 </div>
             `;
@@ -66,6 +67,23 @@
             categoryFormRequest.open('GET', 'SideBar/category.html', true);
             categoryFormRequest.send();
         }
+
+        function includeTypeForm() {
+            const typeFormContainer = document.getElementById('typeFormContainer');
+            const typeFormRequest = new XMLHttpRequest();
+            
+            typeFormRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    typeFormContainer.innerHTML = this.responseText;
+                    searchProducts(); // You can call searchProducts() if needed
+                }
+            };
+            
+            // Make sure the path is correct. If type.html is in the same folder, use './type.html'
+            typeFormRequest.open('GET', './type.html', true);
+            typeFormRequest.send();
+        }
+        
 
         function includePriceRange() {
             const priceRangeContainer = document.getElementById('priceRangeContainer');

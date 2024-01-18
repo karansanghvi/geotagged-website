@@ -1,14 +1,11 @@
 const data = [
     {
       img: "../assets/images/product_images/traditional_art/madhubani_art/1678953220188Ram -Sita.png",
-      title: "Nike Air Monarch IV",
-      star: '<span class="rating-star"></span>',
-      reviews: "(123 reviews)",
-      prevPrice: "$140,00",
-      newPrice: "200",
-      company: "Nike",
-      color: "white",
-      category: "sneakers",
+      title: "Ram Vivah",
+      prevPrice: "3600",
+      newPrice: "4032",
+      category: "traditional",
+      type: "madhubaniart",
     },
     {
       img: "https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg",

@@ -1,32 +1,4 @@
-/* .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.productCard {
-    width: calc(33.33% - 20px);
+.product img {
+    width: 100%;
     height: auto;
-    margin-bottom: 10px;
-    box-sizing: border-box;
 }
-
-.product {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.product-image {
-    width: 250px;
-    height: 350px;
-}
-
-.product p {
-    margin: 5px 0;
-}
-
-.prevPrice {
-    text-decoration: line-through;
-} */

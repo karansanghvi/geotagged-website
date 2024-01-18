@@ -48,12 +48,10 @@ function updateProducts(filteredProducts) {
                 <div class="product">
                     <img src="${product.img}" alt="${product.title}">
                     <h3>${product.title}</h3>
-                    <p>${product.star} ${product.reviews}</p>
                     <p class="prevPrice">${product.prevPrice}</p>
                     <p>${product.newPrice}</p>
-                    <p>Company: ${product.company}</p>
-                    <p>Color: ${product.color}</p>
                     <p>Catgeory: ${product.category}</p>
+                    <p>Type: ${product.type}</p>
                 </div>
             `;
 

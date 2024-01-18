@@ -168,12 +168,11 @@ header nav ul li a.active {
     height: 600px;
     width: 300px;
     background-color: hsla(12, 98%, 52%, 0.1);
-    position: fixed!important;
     z-index: 1;
     overflow: auto;
     color: #000!important;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 80px;
     border-radius: 15px;
 }
 
@@ -194,7 +193,6 @@ header nav ul li a.active {
 
 /* footer */
 .footer {
-    margin-top: 300vh;
     background-color: hsla(12, 98%, 52%, 0.1);
 }
 

@@ -8,8 +8,7 @@ data.forEach((product, index) => {
         <h3>${product.title}</h3>
         <p class="prevPrice">${product.prevPrice}</p>
         <p>${product.newPrice}</p>
-        <p>Catgeory: ${product.categoxry}</p>
-        <p>Type: ${product.type}</p>
+        <p>Catgeory: ${product.category}</p>
     </div>
     `;
     productsContainer.appendChild(productCard);

@@ -51,7 +51,6 @@ function updateProducts(filteredProducts) {
                     <p class="prevPrice">${product.prevPrice}</p>
                     <p>${product.newPrice}</p>
                     <p>Catgeory: ${product.category}</p>
-                    <p>Type: ${product.type}</p>
                 </div>
             `;
 

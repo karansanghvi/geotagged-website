@@ -2,3 +2,15 @@
     width: 100%;
     height: auto;
 }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+
+.product-price {
+    color: hsl(12, 98%, 52%);
+    font-size: larger;
+    font-weight: bolder;
+}

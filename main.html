@@ -20,20 +20,21 @@
             const productCard = document.createElement('div');
             productCard.className = 'productCard';
             productCard.innerHTML = `
-                <div class="product">
-                    <img src="${product.img}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <div>
-                        <div class="product-grid">
-                            <p class="prevPrice">${product.prevPrice}</p>
-                        </div>
-                        <div>
-                            <p class="product-price">${product.newPrice}</p>
-                        </div>
+            <div class="product">
+                <img src="${product.img}" alt="${product.title}">
+                <h3>${product.title}</h3>
+                <div>
+                    <div class="product-grid">
+                        <p class="prevPrice">${product.prevPrice}</p>
                     </div>
-                    <p>Catgeory: ${product.category}</p>
+                    <div>
+                        <p class="product-price">${product.newPrice}</p>
+                    </div>
                 </div>
-            `;
+                <p>Category: ${product.category}</p>
+                <p><a href="${product.link}" target="_blank">View Details</a></p>
+            </div>
+        `;        
 
             productsContainer.appendChild(productCard);
 
@@ -149,9 +150,8 @@
                             <p>${product.star} ${product.reviews}</p>
                             <p class="prevPrice">${product.prevPrice}</p>
                             <p>${product.newPrice}</p>
-                            <p>Company: ${product.company}</p>
-                            <p>Color: ${product.color}</p>
                             <p>Catgeory: ${product.category}</p>
+                            <p><a href="${product.link}" target="_blank">View Details</a></p>
                         </div>
                     `;
     

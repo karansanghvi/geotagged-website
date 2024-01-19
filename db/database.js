@@ -5,6 +5,7 @@ const data = [
       prevPrice: "3600",
       newPrice: "4032",
       category: "traditionalart",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/madhubani_art/1615571146923Bird.jpg",
@@ -12,6 +13,7 @@ const data = [
       prevPrice: "2000",
       newPrice: "1904",
       category: "traditionalart",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/banglar_patachitra/1678953122984Tea costar.jpeg",
@@ -19,6 +21,7 @@ const data = [
       prevPrice: "400",
       newPrice: "336",
       category: "traditionalart",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/banglar_patachitra/1678952913470Patachitra.jpeg",
@@ -26,6 +29,7 @@ const data = [
       prevPrice: "750",
       newPrice: "672",
       category: "traditionalart",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_craft/1678949318901B.jpg",
@@ -33,6 +37,7 @@ const data = [
       prevPrice: "700",
       newPrice: "548",
       category: "traditionalcraft",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_craft/1613716745869walnut.jpg",
@@ -40,6 +45,7 @@ const data = [
       prevPrice: "3550",
       newPrice: "2783",
       category: "traditionalcraft",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676319418496A.jpeg",
@@ -47,6 +53,7 @@ const data = [
       prevPrice: "5000",
       newPrice: "4987",
       category: "indiansaree",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676316784448A.png",
@@ -54,6 +61,7 @@ const data = [
       prevPrice: "900",
       newPrice: "756",
       category: "indiansaree",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676318530893A.jpeg",
@@ -61,6 +69,7 @@ const data = [
       prevPrice: "1300",
       newPrice: "955",
       category: "indiansaree",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1678127700738C.jpeg",
@@ -68,6 +77,7 @@ const data = [
       prevPrice: "10500",
       newPrice: "9922",
       category: "indiansaree",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676316305547A.jpg",
@@ -75,6 +85,7 @@ const data = [
       prevPrice: "2470",
       newPrice: "2334",
       category: "indiansaree",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/dupatta/1678951930718H.jpeg",
@@ -82,6 +93,7 @@ const data = [
       prevPrice: "825",
       newPrice: "693",
       category: "dupatta",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/dupatta/1610605956573patachitra dupatta.jpeg",
@@ -89,6 +101,7 @@ const data = [
       prevPrice: "1000",
       newPrice: "892",
       category: "dupatta",
+      link: "../product_art_1.html",
     },
     {
       img: "../assets/images/product_images/shawl/1618056561332pashmina.jpg",

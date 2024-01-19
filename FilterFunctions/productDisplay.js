@@ -15,6 +15,7 @@ data.forEach((product, index) => {
                         </div>
                     </div>
                     <p>Catgeory: ${product.category}</p>
+                    <p><a href="${product.link}" target="_blank">View Details</a></p>
                 </div>
     `;
     productsContainer.appendChild(productCard);

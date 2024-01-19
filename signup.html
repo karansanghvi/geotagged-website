@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoInsight | Signup</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="./assets/styles/signup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('form').submit(function (e) {
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+          type: 'POST',
+          url: './backend/signupProcess.php',
+          data: formData,
+          success: function (response) {
+            if (response.error) {
+              $('#error-message').text(response.error);
+              // window.location.href = "login.html";
+            } else {
+              window.location.href = 'login.html';
+            }
+          },
+          error: function () {
+            console.error('AJAX request failed');
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+          <img src="./assets/images/logo.png" alt="">
+          <h2 style="font-size: 35px; font-weight: bolder;">GeoInsight</h2>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="aboutus.html">About Us</a>
+                </li>
+                <li>
+                  <a href="Page/page.html">Products</a>
+                </li>
+                <li>
+                  <a href="contactus.html">Contact Us</a>
+                </li>
+                <li>
+                  <a href="login.html">Login</a>
+                </li>
+                <li>
+                  <a href="" class="header-button">My Cart</a>
+                </li>
+            </ul>
+        </nav>
+        <label for="nav_check" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+    </header>
+
+  <div class="flex items-center justify-center h-screen mt-10">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg signup-box">
+      <h1 class="text-3xl font-bold mb-4 text-center">Sign Up</h1>
+      
+      <form action="./backend/signupProcess.php" method="POST" onsubmit="return validateForm()">
+        <div class="mb-4 flex">
+          <div class="w-1/2 pr-2">
+            <label class="block text-sm font-medium text-gray-600">First Name</label>
+            <input type="text" name="first-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
+          </div>
+          <div class="w-1/2 pl-2">
+            <label class="block text-sm font-medium text-gray-600">Last Name</label>
+            <input type="text" name="last-name" required pattern="[A-Za-z]+" title="Only characters are allowed" autocomplete="off" class="mt-1 p-2 w-full border rounded">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Email Address</label>
+          <input type="email" name="email" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Mobile Number</label>
+          <input type="tel" name="mobile-number" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+        
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Set Password</label>
+          <input type="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                title="Password must be at least 8 characters long, including at least one uppercase letter, one lowercase letter, one number, and one special character."
+                autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Confirm Password</label>
+          <input type="password" name="confirm-password" required autocomplete="off" class="mt-1 p-2 w-full border rounded">
+        </div>
+        <p id="error-message" class="text-red-500"></p>
+        <div class="center-button">
+          <button type="submit" class="signup-button">Get Started</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- footer -->
+  <div class="footer">
+    <div class="grid-footer">
+      <div>
+        <h1 style="font-size: 25px; font-weight:bolder;">GeoInsight</h1>
+      </div>
+      <div class="footer-pages">
+        <a href="">Home</a>
+        <a href="">About Us</a>
+        <a href="">Products</a>
+        <a href="">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">My Cart</a>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <h2 class="footer-copyright">&copy; 2024 GeoInsight. All Rights Reserved.</h2>
+  </div>
+
+<!-- <script>
+  function validateForm() {
+    const firstName = document.querySelector('input[name="first-name"]').value.trim();
+    const lastName = document.querySelector('input[name="last-name"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const mobileNumber = document.querySelector('input[name="mobile-number"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value.trim();
+    const confirmPassword = document.querySelector('input[name="confirm-password"]').value.trim();
+
+    // Validate email using a simple regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Invalid Email Address');
+      return false;
+    }
+
+    // Validate mobile number using a simple regex (assuming a 10-digit number)
+    const mobileRegex = /^\d{10}$/;
+    if (!mobileRegex.test(mobileNumber)) {
+      alert('Invalid Mobile Number');
+      return false;
+    }
+
+    // Validate password
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      alert('Invalid Password');
+      return false;
+    }
+
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return false;
+    }
+
+    // Additional validation rules can be added here
+
+    // If all validations pass, return true
+    return true;
+  }
+</script> -->
+
+</body>
+</html>

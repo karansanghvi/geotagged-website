@@ -160,13 +160,6 @@ const data = [
       category: "sweets",
     },
     {
-      img: "../assets/images/product_images/sweets/1618634393321Rosogolla.jpg",
-      title: "Banglar Rosogolla",
-      prevPrice: "500",
-      newPrice: "413",
-      category: "sweets",
-    },
-    {
       img: "../assets/images/product_images/clay_craft/1619420247770terracotta.jpg",
       title: "Elephant Pair Terracotta",
       prevPrice: "6000",
@@ -182,7 +175,7 @@ const data = [
     },
     {
       img: "../assets/images/product_images/clay_craft/1608104376989bowl-600x600.jpg",
-      title: "Khurja pottery bowl lamp",
+      title: "Khurja Pottery Bowl Lamp",
       prevPrice: "700",
       newPrice: "689",
       category: "claycraft",

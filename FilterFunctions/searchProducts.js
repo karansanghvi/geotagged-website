@@ -50,7 +50,7 @@ function updateProducts(filteredProducts) {
                     <h3>${product.title}</h3>
                     <p class="prevPrice">${product.prevPrice}</p>
                     <p>${product.newPrice}</p>
-                    <p>Catgeory: ${product.category}</p>
+                    <p><a href="${product.link}" target="_blank">View Details</a></p>
                 </div>
             `;
 

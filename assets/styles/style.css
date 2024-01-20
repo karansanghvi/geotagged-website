@@ -297,6 +297,7 @@ del {
     margin-left: 160px;
     border-radius: 15px;
     box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
+    padding-bottom: 20px;
 }
 
 .subscribe .subscribe-heading {
@@ -346,6 +347,7 @@ del {
     background-color: black;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-top: 10px;
     padding-left: 40px;
     padding-right: 40px;
     text-transform: uppercase;
@@ -353,7 +355,14 @@ del {
     font-weight: 600;
     border-radius: 15px;
     border: #000;
+    cursor: pointer;
 }
+
+.subscribe .grid-subscribe .subscribe-submit:hover {
+    background-color: #2980b9; /* Color on hover */
+}
+
+
 
 .subscribe .subscribe-check {
     display: flex;
@@ -369,6 +378,7 @@ del {
     height: 20px;
     border: 2px solid white; 
     border-radius: 10px;
+    margin-right: 10px;
 }
 
 @media only screen and (max-width: 767px) {

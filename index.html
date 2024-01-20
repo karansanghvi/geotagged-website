@@ -9,7 +9,117 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | Home</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    
+    <!-- <script>
+      $(document).ready(function () {
+        $.ajax({
+          type: 'POST',
+          url: './backend/subscribeProcess.php',
+          success: function (response) {
+            if (response.error === "User Subscribed") {
+              console.log('User is already subscribed!');
+              console.log(response.sessionData);
+              $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+              $('.subscribe-check').hide();
+            } else if (response.success) {
+              console.log('User subscribed successfully!');
+              console.log(response.sessionData);
+            }
+          },
+          error: function () {
+            console.error('AJAX request failed');
+          }
+        });
+
+        $('form').submit(function (e) {
+          e.preventDefault();
+          var formData = $(this).serialize();
+          $.ajax({
+            type: 'POST',
+            url: './backend/subscribeProcess.php',
+            data: formData,
+            success: function (response) {
+              if (response.error === "User Subscribed") {
+                console.log('User is already subscribed!');
+                console.log(response.sessionData);
+                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+                $('.subscribe-check').hide();
+              } else if (response.success) {
+                console.log('User subscribed successfully!');
+                console.log(response.sessionData);
+                
+              }
+            },
+            error: function () {
+              console.error('AJAX request failed');
+            }
+          });
+        });
+      });
+    </script> -->
+    <script>
+      $(document).ready(function () {
+        // Check if the form has been submitted on this session
+        var isFormSubmitted = sessionStorage.getItem('formSubmitted');
+        console.log(isFormSubmitted);
+    
+        if (!isFormSubmitted) {
+          $.ajax({
+            type: 'POST',
+            url: './backend/subscribeProcess.php',
+            success: function (response) {
+              if (response.error === "User Subscribed") {
+                console.log('User is already subscribed!');
+                console.log(response.sessionData);
+                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+                $('.subscribe-check').hide();
+              } else if (response.success) {
+                console.log('User subscribed successfully!');
+                console.log(response.sessionData);
+              }
+            },
+            error: function () {
+              console.error('AJAX request failed');
+            },
+          });
+        }
+    
+        // Form submit event handler
+        $('form').submit(function (e) {
+          // Set the sessionStorage flag to indicate that the form has been submitted
+          sessionStorage.setItem('formSubmitted', true);
+          // Proceed with form submission
+          var formData = $(this).serialize();
+          $.ajax({
+            type: 'POST',
+            url: './backend/subscribeProcess.php',
+            data: formData,
+            success: function (response) {
+              if (response.error === "User Subscribed") {
+                console.log('User is already subscribed!');
+                console.log(response.sessionData);
+                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+                $('.subscribe-check').hide();
+              } else if (response.success) {
+                console.log('User subscribed successfully!');
+                console.log(response.sessionData);
+              }
+            },
+            error: function () {
+              console.error('AJAX request failed');
+            }
+          });
+        });
+      });
+    </script>
+    
+
+    
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -140,20 +250,19 @@
 
       <!-- subscribe -->
       <div class="subscribe">
-        <h1 class="subscribe-heading">Let's Keep In Touch</h1>
-        <p class="subscribe-subtext">Subscribe to keep up with fresh news and exciting updates!</p>
-        <div class="grid-subscribe">
-          <div>
-            <input type="text" class="subscribe-input">
+        <form action="./backend/subscribeProcess.php" method="POST">
+          <h1 class="subscribe-heading">Let's Keep In Touch</h1>
+          <p class="subscribe-subtext">Subscribe to keep up with fresh news and exciting updates!</p>
+          <div class="grid-subscribe">
+            <div>
+              <button type="submit" class="subscribe-submit">Yes! I would like to Susbcribe!</button>
+            </div>
           </div>
-          <div>
-            <button type="submit" class="subscribe-submit">Subscribe</button>
+          <div class="subscribe-check">
+            <input type="checkbox" name="check" id="" class="subscribe-box" required>
+            I agree to my email address being stored and uses to receive monthly newsletter
           </div>
-        </div>
-        <div class="subscribe-check">
-          <input type="checkbox" name="check" id="" class="subscribe-box" placeholder="Enter your email address">
-          I agree to my email address being stored and uses to receive monthly newsletter
-        </div>
+        </form>
       </div>
       
       <!-- footer -->

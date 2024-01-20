@@ -28,7 +28,6 @@
           success: function (response) {
             if (response.error) {
               $('#error-message').text(response.error);
-              // window.location.href = "login.html";
             } else {
               window.location.href = 'index.html';
             }
@@ -80,7 +79,7 @@
 
   <div class="flex items-center justify-center h-screen font-sans">
     <div class="bg-white p-8 rounded-lg w-full max-w-md mt-30 login-box">
-        <form action="./backend/loginProcess.php" onsubmit="return validateForm()" class="text-center" method="POST">
+        <form action="./backend/loginProcess.php" class="text-center" method="POST">
           <h1 class="text-3xl font-bold mb-4">LOGIN</h1>
           <div class="mb-4 flex items-center">
             <i class='bx bxs-user-circle text-4xl mr-2'></i>

@@ -138,6 +138,11 @@ header nav ul li a.active {
     margin-right: 350px;
 }
 
+.product-page .grid-container .product-img {
+    width: 400px;
+    height: 500px;
+}
+
 .product-page .grid-container .product-info .product-category {
     color: gray;
 }

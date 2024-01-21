@@ -13,20 +13,25 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     
-    <!-- <script>
+    <script>
       $(document).ready(function () {
         $.ajax({
           type: 'POST',
           url: './backend/subscribeProcess.php',
           success: function (response) {
-            if (response.error === "User Subscribed") {
+            if (response.message === "User already Subscribed") {
               console.log('User is already subscribed!');
               console.log(response.sessionData);
               $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
               $('.subscribe-check').hide();
-            } else if (response.success) {
+            }else if (response.message === "User Subscribed") {
               console.log('User subscribed successfully!');
               console.log(response.sessionData);
+              $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+              $('.subscribe-check').hide();
+            }
+            else if(response.message === "User not logged in."){
+              window.location.href = "login.html";
             }
           },
           error: function () {
@@ -42,70 +47,19 @@
             url: './backend/subscribeProcess.php',
             data: formData,
             success: function (response) {
-              if (response.error === "User Subscribed") {
+              if (response.message === "User already Subscribed") {
                 console.log('User is already subscribed!');
                 console.log(response.sessionData);
                 $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
                 $('.subscribe-check').hide();
-              } else if (response.success) {
+              } else if (response.message === "User Subscribed") {
                 console.log('User subscribed successfully!');
                 console.log(response.sessionData);
-                
+                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+                $('.subscribe-check').hide();
               }
-            },
-            error: function () {
-              console.error('AJAX request failed');
-            }
-          });
-        });
-      });
-    </script> -->
-    <script>
-      $(document).ready(function () {
-        // Check if the form has been submitted on this session
-        var isFormSubmitted = sessionStorage.getItem('formSubmitted');
-        console.log(isFormSubmitted);
-    
-        if (!isFormSubmitted) {
-          $.ajax({
-            type: 'POST',
-            url: './backend/subscribeProcess.php',
-            success: function (response) {
-              if (response.error === "User Subscribed") {
-                console.log('User is already subscribed!');
-                console.log(response.sessionData);
-                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
-                $('.subscribe-check').hide();
-              } else if (response.success) {
-                console.log('User subscribed successfully!');
-                console.log(response.sessionData);
-              }
-            },
-            error: function () {
-              console.error('AJAX request failed');
-            },
-          });
-        }
-    
-        // Form submit event handler
-        $('form').submit(function (e) {
-          // Set the sessionStorage flag to indicate that the form has been submitted
-          sessionStorage.setItem('formSubmitted', true);
-          // Proceed with form submission
-          var formData = $(this).serialize();
-          $.ajax({
-            type: 'POST',
-            url: './backend/subscribeProcess.php',
-            data: formData,
-            success: function (response) {
-              if (response.error === "User Subscribed") {
-                console.log('User is already subscribed!');
-                console.log(response.sessionData);
-                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
-                $('.subscribe-check').hide();
-              } else if (response.success) {
-                console.log('User subscribed successfully!');
-                console.log(response.sessionData);
+              else if(response.message === "User not logged in."){
+                window.location.href = "login.html";
               }
             },
             error: function () {
@@ -115,6 +69,7 @@
         });
       });
     </script>
+    
     
 
     
@@ -143,6 +98,9 @@
                 </li>
                 <li>
                   <a href="login.html">Login</a>
+                </li>
+                <li>
+                  <a href="./backend/logoutProcess.php">Log Out</a>
                 </li>
                 <li>
                   <a href="" class="header-button">My Cart</a>

@@ -29,6 +29,7 @@
             if (response.error) {
               $('#error-message').text(response.error);
             } else {
+              console.log(response.sessionData);
               window.location.href = 'index.html';
             }
           },

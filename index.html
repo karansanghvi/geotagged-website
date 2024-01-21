@@ -12,33 +12,27 @@
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    
     <script>
       $(document).ready(function () {
         $.ajax({
           type: 'POST',
-          url: './backend/subscribeProcess.php',
+          url: './backend/checkUserSubscribed.php',
           success: function (response) {
-            if (response.message === "User already Subscribed") {
+            if (response.is_Subscribed == 1) {
               console.log('User is already subscribed!');
               console.log(response.sessionData);
               $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
               $('.subscribe-check').hide();
-            }else if (response.message === "User Subscribed") {
-              console.log('User subscribed successfully!');
-              console.log(response.sessionData);
-              $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
-              $('.subscribe-check').hide();
             }
-            else if(response.message === "User not logged in."){
-              window.location.href = "login.html";
+            else{
+              console.log(response.is_Subscribed);
             }
           },
           error: function () {
             console.error('AJAX request failed');
           }
         });
-
+    
         $('form').submit(function (e) {
           e.preventDefault();
           var formData = $(this).serialize();
@@ -50,15 +44,16 @@
               if (response.message === "User already Subscribed") {
                 console.log('User is already subscribed!');
                 console.log(response.sessionData);
-                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+
+                $('.subscribe-submit').text('Subscribed!');
                 $('.subscribe-check').hide();
               } else if (response.message === "User Subscribed") {
                 console.log('User subscribed successfully!');
                 console.log(response.sessionData);
-                $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+                
+                $('.subscribe-submit').text('Subscribed!');
                 $('.subscribe-check').hide();
-              }
-              else if(response.message === "User not logged in."){
+              } else if(response.message === "User not logged in.") {
                 window.location.href = "login.html";
               }
             },
@@ -70,8 +65,6 @@
       });
     </script>
     
-    
-
     
 </head>
 

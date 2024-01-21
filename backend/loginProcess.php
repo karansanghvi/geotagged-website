@@ -23,7 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_SESSION['userEmail'] = $userData[3];
         $_SESSION['userMobile'] = $userData[4];
         $_SESSION['userPassword'] = $userData[5];
-        $_SESSION['is_Subscribed'] = $userData[6]; 
+        $_SESSION['is_Subscribed'] = $userData[6];
+        if($_SESSION["is_Subscribed"] == 1){
+            $_SESSION["subscribeClicked"] = 1;
+        } 
+        else{
+            $_SESSION["subscribeClicked"] = 0;
+        }
         $_SESSION['loggedIn'] = true;
         $response['success'] = true;
         $response['sessionData'] = $_SESSION;

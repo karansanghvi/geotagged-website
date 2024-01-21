@@ -17,12 +17,14 @@ function checkUserSubscribed($conn, $userID) {
 
 if (isset($_SESSION['loggedIn'])) {
     $userID = $_SESSION['userID'];
-
     if (!checkUserSubscribed($conn, $userID)) {
         $subscribeUserSQL = "UPDATE `users` SET `is_subscribed` = '1' WHERE userID = '$userID';";
         $result = mysqli_query($conn, $subscribeUserSQL);
-
+        
         if ($result) {
+            $_SESSION["is_Subscribed"] = 1;
+            error_log("is_Subscribed set to 1");
+            
             $response['success'] = true;
             $response['message'] = "User Subscribed";
         } else {
@@ -32,7 +34,8 @@ if (isset($_SESSION['loggedIn'])) {
         $response['message'] = "User already Subscribed";
     }
     $response['sessionData'] = $_SESSION;
-} else {
+} 
+else{
     $response['message'] = "User not logged in.";
 }
 

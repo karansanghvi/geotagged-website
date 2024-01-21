@@ -1,7 +1,7 @@
 <?php
 session_start();
 $response = array();
-include "dbconnect.php";
+include "../dbconnect.php";
 
 function checkUserSubscribed($conn, $userID) {
     $checkUserSQL = "SELECT * FROM `users` WHERE userID = '$userID' and is_subscribed = 1 ";

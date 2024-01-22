@@ -9,7 +9,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | Home</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          type: 'POST',
+          url: './backend/indexReload.php',
+          success: function (response) {
+            if (response.is_Subscribed == 1) {
+              console.log('User is already subscribed!');
+              console.log('Response Session Data: ' , response.sessionData);
+              console.log('Response for Logged in: ' ,response.isLoggedIn);
+              $('.subscribe-submit').text('Subscribed!').attr('disabled', true);
+              $('.subscribe-check').hide();
+            }
+            else{
+              console.log('Response for Logged in: ' ,response.isLoggedIn);
+              console.log('Response for Subscribed: ' ,response.is_Subscribed);
+            }
+
+            if (response.isLoggedIn) {
+                $('.loginLogout').text('Log Out').attr('href', './backend/logoutProcess.php');
+            } else {
+              $('.loginLogout').text('Login').attr('href', 'login.html');
+            }
+          },
+          error: function () {
+            console.error('AJAX request failed');
+          }
+        });
+    
+        $('form').submit(function (e) {
+          e.preventDefault();
+          var formData = $(this).serialize();
+          $.ajax({
+            type: 'POST',
+            url: './backend/subscribeProcess.php',
+            data: formData,
+            success: function (response) {
+              if (response.message === "User already Subscribed") {
+                console.log('User is already subscribed!');
+                console.log('Response Session Data: ' , response.sessionData);
+                $('.subscribe-submit').text('Subscribed!');
+                $('.subscribe-check').hide();
+              } else if (response.message === "User Subscribed") {
+                console.log('User subscribed successfully!');
+                console.log('Response Session Data: ' , response.sessionData);
+                $('.subscribe-submit').text('Subscribed!');
+                $('.subscribe-check').hide();
+              } else if(response.message === "User not logged in.") {
+                window.location.href = "login.html";
+              }
+            },
+            error: function () {
+              console.error('AJAX request failed');
+            }
+          });
+        });
+      });
+    </script>
+    
+    
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -32,7 +96,7 @@
                   <a href="contactus.html">Contact Us</a>
                 </li>
                 <li>
-                  <a href="login.html">Login</a>
+                  <a href="login.html" class="loginLogout">Login</a>
                 </li>
                 <li>
                   <a href="" class="header-button">My Cart</a>
@@ -140,20 +204,19 @@
 
       <!-- subscribe -->
       <div class="subscribe">
-        <h1 class="subscribe-heading">Let's Keep In Touch</h1>
-        <p class="subscribe-subtext">Subscribe to keep up with fresh news and exciting updates!</p>
-        <div class="grid-subscribe">
-          <div>
-            <input type="text" class="subscribe-input">
+        <form action="./backend/subscribeProcess.php" method="POST">
+          <h1 class="subscribe-heading">Let's Keep In Touch</h1>
+          <p class="subscribe-subtext">Subscribe to keep up with fresh news and exciting updates!</p>
+          <div class="grid-subscribe">
+            <div>
+              <button type="submit" class="subscribe-submit">Yes! I would like to Susbcribe!</button>
+            </div>
           </div>
-          <div>
-            <button type="submit" class="subscribe-submit">Subscribe</button>
+          <div class="subscribe-check">
+            <input type="checkbox" name="check" id="" class="subscribe-box" required>
+            I agree to my email address being stored and uses to receive monthly newsletter
           </div>
-        </div>
-        <div class="subscribe-check">
-          <input type="checkbox" name="check" id="" class="subscribe-box" placeholder="Enter your email address">
-          I agree to my email address being stored and uses to receive monthly newsletter
-        </div>
+        </form>
       </div>
       
       <!-- footer -->

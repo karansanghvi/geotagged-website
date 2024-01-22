@@ -13,22 +13,23 @@
     <script>
         function addToCart(productName, category, price) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        
+            const productImgSrc = document.querySelector('.product-img').src;
+        
             const item = {
                 name: productName,
                 category: category,
                 price: price,
-                tinyImage: 'featured_1_home_page.png'
+                tinyImage: productImgSrc
             };
-
+        
             cart.push(item);
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Optional: Display a confirmation message
             alert(`Added ${productName} to the cart!`);
-
+        
             redirectToCart();
-        }
+        }        
 
         function redirectToCart() {
             setTimeout(() => {
@@ -36,7 +37,6 @@
             }, 500);
         }
 
-        // Function to redirect to buynow.html
         function redirectToBuyNow() {
             window.location.href = 'buynow.html';
         }

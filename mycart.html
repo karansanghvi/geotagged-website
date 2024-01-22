@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/mycart.css">
+    <script src="cart.js"></script>
+    <title>GeoInsight | Your Cart</title>
+    
+</head>
+<body>
+    <header>
+        
+            <div class="logo">
+              <img src="./assets/images/logo.png" alt="">
+              <h2>GeoInsight</h2>
+            </div>
+            <input type="checkbox" id="nav_check" hidden>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="aboutus.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="Page/page.html">Products</a>
+                    </li>
+                    <li>
+                      <a href="contactus.html">Contact Us</a>
+                    </li>
+                    <li>
+                      <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                      <a href="" class="header-button">My Cart</a>
+                    </li>
+                </ul>
+            </nav>
+            <label for="nav_check" class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </label>
+        
+    </header>
+    <br> <br> <br> <br>
+    <main>
+        <div class="cart-container">
+            <h1>Your Cart</h1>
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Product Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+            </table>
+            <div class="total-price">Total: <span id="totalAmount">&#8377; 0.00</span></div>
+            
+            
+            <button id="buyNow" onclick="proceedToBuy()">Proceed to Buy</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="grid-footer">
+              <div>
+                <h1>GeoInsight</h1>
+              </div>
+              <div class="footer-pages">
+                <a href="">Home</a>
+                <a href="">About Us</a>
+                <a href="">Products</a>
+                <a href="">Contact Us</a>
+                <a href="">Login</a>
+                <a href="">My Cart</a>
+              </div>
+            </div>
+            <hr class="footer-divider">
+            <h2 class=  "footer-copyright">&copy; 2024 GeoInsight. All Rights Reserved.</h2>
+          </div>
+    </footer>
+   
+</body>
+</html>
+<script>
+       
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+ 
+  const cartTable = document.getElementById('cart-table');
+  const cartItemsBody = document.getElementById('cart-items');
+  const totalAmount = document.getElementById('totalAmount');
+  let total = 0;
+
+  cartItems.forEach((item, index) => {
+      const row = cartItemsBody.insertRow();
+      const cellImage = row.insertCell(0);
+      const cellName = row.insertCell(1);
+      const cellCategory = row.insertCell(2);
+      const cellPrice = row.insertCell(3);
+      const cellAction = row.insertCell(4);
+
+    
+      const image = document.createElement('img');
+      image.src = item.tinyImage;
+      image.alt = item.name;
+      image.width = 80;
+      image.height = 80;
+      cellImage.appendChild(image);
+
+      
+      cellName.innerText = item.name;
+      cellCategory.innerText = item.category;
+      cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
+
+      const removeButton = document.createElement('button');
+      removeButton.innerText = 'Remove';
+      removeButton.addEventListener('click', () => removeItem(index));
+      cellAction.appendChild(removeButton);
+
+      
+      total += item.price;
+  });
+
+  
+  totalAmount.innerText = `₹ ${total.toFixed(2)}`;
+
+  
+  function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      location.reload(); s
+  }
+
+  
+  function proceedToBuy() {
+      
+      window.location.href = 'user-details.html';
+  }
+</script>

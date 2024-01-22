@@ -9,6 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | Phulkari Saree</title>
+    <script>
+      function addToCart(productName, category, price) {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+          const item = {
+              name: productName,
+              category: category,
+              price: price,
+              tinyImage: '../../assets/images/product_images/indian_saree/1676316305547A.jpg'
+          };
+
+          cart.push(item);
+          localStorage.setItem('cart', JSON.stringify(cart));
+
+          alert(`Added ${productName} to the cart!`);
+
+          redirectToCart();
+      }
+
+      function redirectToCart() {
+          setTimeout(() => {
+              window.location.href = '../../mycart.html';
+          }, 500);
+      }
+
+      function redirectToBuyNow() {
+          window.location.href = '../../mybuynow.html';
+      }
+  </script>
 </head>
 <body>
     <header>
@@ -77,10 +106,10 @@
             <br> <br> <br>
             <div class="grid-3">
               <div>
-                <a href="#" target="_blank" class="buy-now">Buy Now</a>
+                <a href="../../mybuynow.html" target="_blank" class="buy-now">Buy Now</a>
               </div>
               <div>
-                <a href="#" target="_blank" class="add-to-cart">Add To Cart</a>
+                  <button onclick="addToCart('Phulkari Saree', 'Indian Saree', 2334)" class="add-to-cart">Add To Cart</button>
               </div>
             </div>
           </div>

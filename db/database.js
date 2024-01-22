@@ -5,7 +5,7 @@ const data = [
       prevPrice: "3600",
       newPrice: "4032",
       category: "traditionalart",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_art/product_art_1.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/madhubani_art/1615571146923Bird.jpg",
@@ -13,7 +13,7 @@ const data = [
       prevPrice: "2000",
       newPrice: "1904",
       category: "traditionalart",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_art/product_art_2.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/banglar_patachitra/1678953122984Tea costar.jpeg",
@@ -21,7 +21,7 @@ const data = [
       prevPrice: "400",
       newPrice: "336",
       category: "traditionalart",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_art/product_art_3.html",
     },
     {
       img: "../assets/images/product_images/traditional_art/banglar_patachitra/1678952913470Patachitra.jpeg",
@@ -29,7 +29,7 @@ const data = [
       prevPrice: "750",
       newPrice: "672",
       category: "traditionalart",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_art/product_art_4.html",
     },
     {
       img: "../assets/images/product_images/traditional_craft/1678949318901B.jpg",
@@ -37,7 +37,7 @@ const data = [
       prevPrice: "700",
       newPrice: "548",
       category: "traditionalcraft",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_craft/product_traditional_craft_2.html",
     },
     {
       img: "../assets/images/product_images/traditional_craft/1613716745869walnut.jpg",
@@ -45,7 +45,7 @@ const data = [
       prevPrice: "3550",
       newPrice: "2783",
       category: "traditionalcraft",
-      link: "../product_art_1.html",
+      link: "../productpages/traditional_craft/product_traditional_craft_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676319418496A.jpeg",
@@ -53,7 +53,7 @@ const data = [
       prevPrice: "5000",
       newPrice: "4987",
       category: "indiansaree",
-      link: "../product_art_1.html",
+      link: "../productpages/indiansaree/product_indiansaree_1.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676316784448A.png",
@@ -61,7 +61,7 @@ const data = [
       prevPrice: "900",
       newPrice: "756",
       category: "indiansaree",
-      link: "../product_art_1.html",
+      link: "../productpages/indiansaree/product_indiansaree_2.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676318530893A.jpeg",
@@ -69,7 +69,7 @@ const data = [
       prevPrice: "1300",
       newPrice: "955",
       category: "indiansaree",
-      link: "../product_art_1.html",
+      link: "../productpages/indiansaree/product_indiansaree_3.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1678127700738C.jpeg",
@@ -77,7 +77,7 @@ const data = [
       prevPrice: "10500",
       newPrice: "9922",
       category: "indiansaree",
-      link: "../product_art_1.html",
+      link: "../productpages/indiansaree/product_indiansaree_4.html",
     },
     {
       img: "../assets/images/product_images/indian_saree/1676316305547A.jpg",
@@ -85,7 +85,7 @@ const data = [
       prevPrice: "2470",
       newPrice: "2334",
       category: "indiansaree",
-      link: "../product_art_1.html",
+      link: "../productpages/indiansaree/product_indiansaree_5.html",
     },
     {
       img: "../assets/images/product_images/dupatta/1678951930718H.jpeg",
@@ -93,7 +93,7 @@ const data = [
       prevPrice: "825",
       newPrice: "693",
       category: "dupatta",
-      link: "../product_art_1.html",
+      link: "../productpages/dupatta/product_dupatta_1.html",
     },
     {
       img: "../assets/images/product_images/dupatta/1610605956573patachitra dupatta.jpeg",
@@ -101,7 +101,7 @@ const data = [
       prevPrice: "1000",
       newPrice: "892",
       category: "dupatta",
-      link: "../product_art_1.html",
+      link: "../productpages/dupatta/product_dupatta_2.html",
     },
     {
       img: "../assets/images/product_images/shawl/1618056561332pashmina.jpg",
@@ -109,6 +109,7 @@ const data = [
       prevPrice: "70000",
       newPrice: "69825",
       category: "shawl",
+      link: "../productpages/shawl/product_shawl_1.html",
     },
     {
       img: "../assets/images/product_images/shawl/1619204701363banana.jpg",
@@ -116,6 +117,7 @@ const data = [
       prevPrice: "2240",
       newPrice: "1881",
       category: "shawl",
+      link: "../productpages/shawl/product_shawl_2.html",
     },
     {
       img: "../assets/images/product_images/shawl/1678950105303F.jpg",
@@ -123,6 +125,7 @@ const data = [
       prevPrice: "1330",
       newPrice: "1117",
       category: "shawl",
+      link: "../productpages/shawl/product_shawl_3.html",
     },
     {
       img: "../assets/images/product_images/grocery/1616520737707agarbatti.jpg",
@@ -130,6 +133,7 @@ const data = [
       prevPrice: "120",
       newPrice: "94",
       category: "grocery",
+      link: "../productpages/grocery/product_grocery_1.html",
     },
     {
       img: "../assets/images/product_images/grocery/1607622048831mysore sandal soap.jpg",
@@ -137,6 +141,7 @@ const data = [
       prevPrice: "300",
       newPrice: "230",
       category: "grocery",
+      link: "../productpages/grocery/product_grocery_2.html",
     },
     {
       img: "../assets/images/product_images/grocery/1617726622353Black Tea.jpg",
@@ -144,6 +149,7 @@ const data = [
       prevPrice: "1200",
       newPrice: "1134",
       category: "grocery",
+      link: "../productpages/grocery/product_grocery_3.html",
     },
     {
       img: "../assets/images/product_images/grocery/1616406204330tulaipanji  .jpg",
@@ -151,6 +157,7 @@ const data = [
       prevPrice: "1000",
       newPrice: "945",
       category: "grocery",
+      link: "../productpages/grocery/product_grocery_4.html",
     },
     {
       img: "../assets/images/product_images/sweets/1618634393321Rosogolla.jpg",
@@ -158,6 +165,7 @@ const data = [
       prevPrice: "500",
       newPrice: "413",
       category: "sweets",
+      link: "../productpages/sweets/product_sweets_1.html",
     },
     {
       img: "../assets/images/product_images/clay_craft/1619420247770terracotta.jpg",
@@ -165,6 +173,7 @@ const data = [
       prevPrice: "6000",
       newPrice: "5376",
       category: "claycraft",
+      link: "../productpages/clay_craft/product_claycraft_1.html",
     },
     {
       img: "../assets/images/product_images/clay_craft/1619202961553ganesh-ji.jpg",
@@ -172,6 +181,7 @@ const data = [
       prevPrice: "900",
       newPrice: "756",
       category: "claycraft",
+      link: "../productpages/clay_craft/product_claycraft_2.html",
     },
     {
       img: "../assets/images/product_images/clay_craft/1608104376989bowl-600x600.jpg",
@@ -179,6 +189,7 @@ const data = [
       prevPrice: "700",
       newPrice: "689",
       category: "claycraft",
+      link: "../productpages/clay_craft/product_claycraft_3.html",
     },
     {
       img: "../assets/images/product_images/wooden_craft/1617733888247light.jpg",
@@ -186,6 +197,7 @@ const data = [
       prevPrice: "800",
       newPrice: "761",
       category: "woodencraft",
+      link: "../productpages/wooden_craft/product_woodencraft_1.html",
     },
     {
       img: "../assets/images/product_images/wooden_craft/1616406824249walnut a .jpg",
@@ -193,6 +205,7 @@ const data = [
       prevPrice: "2700",
       newPrice: "2661",
       category: "woodencraft",
+      link: "../productpages/wooden_craft/product_woodencraft_1.html",
     },
     {
       img: "../assets/images/product_images/metal_craft/1617653174946moradabad a.jpg",
@@ -200,6 +213,7 @@ const data = [
       prevPrice: "1499",
       newPrice: "1415",
       category: "metalcraft",
+      link: "../productpages/metal_craft/product_metalcraft_1.html",
     },
 ]
 

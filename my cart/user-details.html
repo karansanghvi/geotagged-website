@@ -103,20 +103,19 @@
         
     </footer>
     <script>
-        // Function to handle "Proceed to Pay" button click
+      
         function proceedToPay() {
-            // You can implement validation if needed
-            // Proceed to the payment page
+            
             window.location.href = 'product1.html';
         }
 
-        // Function to handle "Cancel" button click
+      
         function cancel() {
-            // Redirect to the homepage
+            
             window.location.href = 'index.html';
         }
         function proceedToPay() {
-    // Retrieve user details from the form
+    
     const userDetails = {
         userName: document.getElementById('userName').value,
         userMobile: document.getElementById('userMobile').value,
@@ -127,10 +126,10 @@
         userLandmark: document.getElementById('userLandmark').value,
     };
 
-    // Save user details in sessionStorage
+   
     sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
 
-    // Proceed to the payment page
+    
     window.location.href = 'user-summary.html';
 }
 

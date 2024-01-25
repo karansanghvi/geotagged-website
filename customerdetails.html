@@ -52,25 +52,25 @@
             <h1>Enter Your Details</h1>
            
             <form id="userDetailsForm">
-                <label for="userName">Name:</label>
+                <label for="userName"><b>Full Name:</b></label>
                 <input type="text" id="userName" name="userName" required>
 
-                <label for="userMobile">Mobile Number:</label>
+                <label for="userMobile"><b>Mobile Number:</b></label>
                 <input type="tel" id="userMobile" name="userMobile" required>
 
-                <label for="userPincode">Pincode:</label>
+                <label for="userPincode"><b>Pincode:</b></label>
                 <input type="text" id="userPincode" name="userPincode" required>
 
-                <label for="userFlat">Flat, House No.:</label>
+                <label for="userFlat"><b>Flat, House No.:</b></label>
                 <input type="text" id="userFlat" name="userFlat" required>
 
-                <label for="userBuilding">Building, Company, Apartment:</label>
+                <label for="userBuilding"><b>Building, Company, Apartment:</b></label>
                 <input type="text" id="userBuilding" name="userBuilding" required>
 
-                <label for="userArea">Area, Street, Sector, Village:</label>
+                <label for="userArea"><b>Area, Street, Sector, Village:</b></label>
                 <input type="text" id="userArea" name="userArea" required>
 
-                <label for="userLandmark">Landmark:</label>
+                <label for="userLandmark"><b>Landmark:</b></label>
                 <input type="text" id="userLandmark" name="userLandmark" required>
 
                
@@ -103,18 +103,22 @@
         
     </footer>
     <script>
-        // Function to handle "Proceed to Pay" button click
-        function proceedToPay() {
-            // You can implement validation if needed
-            // Proceed to the payment page
-            window.location.href = 'product1.html';
-        }
-
-        // Function to handle "Cancel" button click
-        function cancel() {
-            // Redirect to the homepage
-            window.location.href = 'index.html';
-        }
+      function cancel() {
+        window.location.href = 'index.html';
+      }
+      function proceedToPay() {
+        const userDetails = {
+            userName: document.getElementById('userName').value,
+            userMobile: document.getElementById('userMobile').value,
+            userPincode: document.getElementById('userPincode').value,
+            userFlat: document.getElementById('userFlat').value,
+            userBuilding: document.getElementById('userBuilding').value,
+            userArea: document.getElementById('userArea').value,
+            userLandmark: document.getElementById('userLandmark').value,
+        };
+        sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+        window.location.href = 'user-summary.html';
+      }
     </script>
 </body>
 </html>

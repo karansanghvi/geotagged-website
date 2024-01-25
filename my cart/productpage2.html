@@ -11,34 +11,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | Home</title>
     <script>
-        function addToCart(productName, category, price) {
+         function addToCart(productName, category, price) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        
+            const productImgSrc = document.querySelector('.product-img').src;
+        
             const item = {
                 name: productName,
                 category: category,
                 price: price,
-                tinyImage: 'featured_2_home_page.jpeg.jpg'
+                tinyImage: productImgSrc
             };
-
+        
             cart.push(item);
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Optional: Display a confirmation message
             alert(`Added ${productName} to the cart!`);
-
+        
             redirectToCart();
-        }
+        }        
 
         function redirectToCart() {
             setTimeout(() => {
                 window.location.href = 'cart.html';
             }, 500);
         }
-        function redirectToBuyNow() {
-            window.location.href = 'buynow.html';
-        }
 
+        function addtobuynow(productName, category, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            const productImgSrc = document.querySelector('.product-img').src;
+        
+            const item = {
+                name: productName,
+                category: category,
+                price: price,
+                tinyImage: productImgSrc
+            };
+        
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Added ${productName} to the cart!`);
+        
+            redirectToBuyNow();
+        }        
+
+
+        function redirectToBuyNow() {
+            setTimeout(() => {
+                window.location.href = 'buynow.html';
+            }, 500);
+        }
         
     </script>
 </head>
@@ -120,7 +144,7 @@
                     <br> <br> <br>
                     <div class="grid-3">
                         <div>
-                            <a href="#" target="_blank" class="buy-now">Buy Now</a>
+                            <button class="buy-now" onclick="addtobuynow('Ram Vivah', 'Traditional Art', 3600)">BUYNOW</button>
                         </div>
                         <div>
                             <button class="add-to-cart" onclick="addToCart('Sita Banai', 'Traditional crockery', 336)">Add To Cart</button>

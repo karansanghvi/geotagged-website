@@ -37,8 +37,31 @@
             }, 500);
         }
 
+        function addtobuynow(productName, category, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            const productImgSrc = document.querySelector('.product-img').src;
+        
+            const item = {
+                name: productName,
+                category: category,
+                price: price,
+                tinyImage: productImgSrc
+            };
+        
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Added ${productName} to the cart!`);
+        
+            redirectToBuyNow();
+        }        
+
+
         function redirectToBuyNow() {
-            window.location.href = 'buynow.html';
+            setTimeout(() => {
+                window.location.href = 'buynow.html';
+            }, 500);
         }
     </script>
 </head>
@@ -120,12 +143,12 @@
                     <br> <br> <br>
                     <div class="grid-3">
                         <div>
-                            <!-- Change the href attribute to buynow.html -->
-                            <a href="buynow.html" target="_blank" class="buy-now">Buy Now</a>
+                            <button class="buy-now" onclick="addtobuynow('Ram Vivah', 'Traditional Art', 3600)">BUYNOW</button>
                         </div>
                         <div>
-                            <button class="add-to-cart" onclick="addToCart('Ram Vivah', 'Traditional Art', 3600)">Add To Cart</button>
+                            <button class="add-to-cart" onclick="addToCart('Ram Vivah', 'Traditional Art', 3600)">Add To Cart</button>             
                         </div>
+                        
                     </div>
                 </div>
             </div>

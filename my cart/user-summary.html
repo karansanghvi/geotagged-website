@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/user-summary.css">
+    <title>User Summary | GeoInsight</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./assets/images/logo.png" alt="">
+            <h2>GeoInsight</h2>
+          </div>
+          <input type="checkbox" id="nav_check" hidden>
+          <nav>
+              <ul>
+                  <li>
+                      <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                      <a href="aboutus.html">About Us</a>
+                  </li>
+                  <li>
+                    <a href="">Products</a>
+                  </li>
+                  <li>
+                    <a href="contactus.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="login.html">Login</a>
+                  </li>
+                  <li>
+                    <a href="" class="header-button active">My Cart</a>
+                  </li>
+              </ul>
+          </nav>
+          <label for="nav_check" class="hamburger">
+              <div></div>
+              <div></div>
+              <div></div>
+          </label>
+        
+    </header>
+
+    <main>
+        <div class="user-details-section">
+            <h2 class="title"> User Details</h2>
+            <table class="user-details-table">
+                <tr>
+                    <td><strong>Name:</strong></td>
+                    <td><span id="summaryUserName"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile Number:</strong></td>
+                    <td><span id="summaryUserMobile"></span></td>
+                </tr>
+                <tr>
+                    <td><Strong>Address</Strong></td>
+
+                <td>
+                    Flat NO: <span id="summaryUserFlat"></span>,
+                    Building NO: </strong><span id="summaryUserBuilding"></span>,
+                    <br>
+                    Area, Street, Sector, Village: <span id="summaryUserArea"></span>,
+                    <br>
+                    
+                    Pincode: <span id="summaryUserPincode"></span>,
+                    Landmark: <span id="summaryUserLandmark"></span></td>
+                </td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <div class="user-summary-container">
+           
+
+            <div class="summary-details">
+                <!-- User details will be dynamically populated here -->
+            </div>
+
+            <div class="cart-items-section">
+                <h2 class="title">Cart Items</h2>
+                <table id="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items"></tbody>
+                </table>
+                <div id="totalAmountContainer" style="text-align: left; padding: 20px;">
+                    <strong>Total Amount: ₹ <span id="totalAmount">0.00</span></strong>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="button" onclick="proceedToPay()" id="button">Proceed to Pay</button>
+                <button type="button" onclick="cancel()" id="button">Cancel</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="grid-footer">
+                <div>
+                    <h1>GeoInsight</h1>
+                </div>
+                <div class="footer-pages">
+                    <a href="">Home</a>
+                    <a href="">About Us</a>
+                    <a href="">Products</a>
+                    <a href="">Contact Us</a>
+                    <a href="">Login</a>
+                    <a href="">My Cart</a>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <h2 class="footer-copyright">&copy; 2024 GeoInsight. All Rights Reserved.</h2>
+        </div>
+    </footer>
+
+    <script>
+       // user-summary.js
+
+       function populateUserDetails() {
+    const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
+    document.getElementById('summaryUserName').textContent = userDetails.userName;
+    document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
+    document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
+    document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
+    document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
+    document.getElementById('summaryUserArea').textContent = userDetails.userArea;
+    document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
+
+    // Retrieve cartItems from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsBody = document.getElementById('cart-items');
+    let total = 0;
+
+    // Clear existing cart items
+    cartItemsBody.innerHTML = '';
+
+    // Populate cart items
+    cartItems.forEach((item, index) => {
+        const row = cartItemsBody.insertRow();
+        const cellImage = row.insertCell(0);
+        const cellName = row.insertCell(1);
+        const cellCategory = row.insertCell(2);
+        const cellPrice = row.insertCell(3);
+
+        const image = document.createElement('img');
+        image.src = item.tinyImage;
+        image.alt = item.name;
+        image.width = 80;
+        image.height = 80;
+        cellImage.appendChild(image);
+
+        cellName.innerText = item.name;
+        cellCategory.innerText = item.category;
+        cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
+
+        total += item.price;  // Move this line outside the loop
+    });
+
+    // Update total amount
+    document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
+}
+
+
+function proceedToBuy() {
+    // Implement the functionality to proceed to payment
+    // For example, redirect to a payment page
+    window.location.href = 'payment.html';
+}
+
+
+
+window.onload = populateUserDetails;
+
+    </script>
+</body>
+</html>

@@ -115,6 +115,25 @@
             // Redirect to the homepage
             window.location.href = 'index.html';
         }
+        function proceedToPay() {
+    // Retrieve user details from the form
+    const userDetails = {
+        userName: document.getElementById('userName').value,
+        userMobile: document.getElementById('userMobile').value,
+        userPincode: document.getElementById('userPincode').value,
+        userFlat: document.getElementById('userFlat').value,
+        userBuilding: document.getElementById('userBuilding').value,
+        userArea: document.getElementById('userArea').value,
+        userLandmark: document.getElementById('userLandmark').value,
+    };
+
+    // Save user details in sessionStorage
+    sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+    // Proceed to the payment page
+    window.location.href = 'user-summary.html';
+}
+
     </script>
 </body>
 </html>

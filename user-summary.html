@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles/user-summary.css">
+    <link rel="stylesheet" href="./assets/styles/user-summary.css">
     <title>User Summary | GeoInsight</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
           <nav>
               <ul>
                   <li>
-                      <a href="index.html">Home</a>
+                      <a href="index.html" class="active">Home</a>
                   </li>
                   <li>
                       <a href="aboutus.html">About Us</a>
@@ -60,20 +60,19 @@
                     <td><span id="summaryUserMobile"></span></td>
                 </tr>
                 <tr>
-                    <td><Strong>Address</Strong></td>
-
-                <td>
-                    Flat NO: <span id="summaryUserFlat"></span>,
-                    Building NO: </strong><span id="summaryUserBuilding"></span>,
-                    <br>
-                    Area, Street, Sector, Village: <span id="summaryUserArea"></span>,
-                    <br>
-                    
-                    Pincode: <span id="summaryUserPincode"></span>,
-                    Landmark: <span id="summaryUserLandmark"></span></td>
-                </td>
+                    <td><Strong>Address:</Strong></td>
+                    <td>
+                        Flat NO: <span id="summaryUserFlat"></span>,
+                        <br>
+                        Building NO: </strong><span id="summaryUserBuilding"></span>,
+                        <br>
+                        Area, Street, Sector, Village: <span id="summaryUserArea"></span>,
+                        <br>
+                        Pincode: <span id="summaryUserPincode"></span>,
+                        <br>
+                        Landmark: <span id="summaryUserLandmark"></span></td>
+                    </td>
                 </tr>
-                
             </table>
         </div>
 
@@ -84,8 +83,9 @@
                 <!-- User details will be dynamically populated here -->
             </div>
 
+            <h2 class="title">Cart Items</h2>
             <div class="cart-items-section">
-                <h2 class="title">Cart Items</h2>
+                
                 <table id="cart-table">
                     <thead>
                         <tr>
@@ -93,7 +93,6 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
-                            
                         </tr>
                     </thead>
                     <tbody id="cart-items"></tbody>
@@ -131,63 +130,50 @@
     </footer>
 
     <script>
-       // user-summary.js
-
        function populateUserDetails() {
-    const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
-    document.getElementById('summaryUserName').textContent = userDetails.userName;
-    document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
-    document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
-    document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
-    document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
-    document.getElementById('summaryUserArea').textContent = userDetails.userArea;
-    document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
+        const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
+        document.getElementById('summaryUserName').textContent = userDetails.userName;
+        document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
+        document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
+        document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
+        document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
+        document.getElementById('summaryUserArea').textContent = userDetails.userArea;
+        document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
 
-    // Retrieve cartItems from localStorage
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItemsBody = document.getElementById('cart-items');
-    let total = 0;
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsBody = document.getElementById('cart-items');
+        let total = 0;
 
-    // Clear existing cart items
-    cartItemsBody.innerHTML = '';
+        cartItemsBody.innerHTML = '';
 
-    // Populate cart items
-    cartItems.forEach((item, index) => {
-        const row = cartItemsBody.insertRow();
-        const cellImage = row.insertCell(0);
-        const cellName = row.insertCell(1);
-        const cellCategory = row.insertCell(2);
-        const cellPrice = row.insertCell(3);
+        cartItems.forEach((item, index) => {
+            const row = cartItemsBody.insertRow();
+            const cellImage = row.insertCell(0);
+            const cellName = row.insertCell(1);
+            const cellCategory = row.insertCell(2);
+            const cellPrice = row.insertCell(3);
 
-        const image = document.createElement('img');
-        image.src = item.tinyImage;
-        image.alt = item.name;
-        image.width = 80;
-        image.height = 80;
-        cellImage.appendChild(image);
+            const image = document.createElement('img');
+            image.src = item.tinyImage;
+            image.alt = item.name;
+            image.width = 80;
+            image.height = 80;
+            cellImage.appendChild(image);
 
-        cellName.innerText = item.name;
-        cellCategory.innerText = item.category;
-        cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
+            cellName.innerText = item.name;
+            cellCategory.innerText = item.category;
+            cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
 
-        total += item.price;  // Move this line outside the loop
-    });
+            total += item.price;  
+        });
+        document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
+    }
 
-    // Update total amount
-    document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
-}
+    function proceedToBuy() {
+        window.location.href = 'payment.html';
+    }
 
-
-function proceedToBuy() {
-    // Implement the functionality to proceed to payment
-    // For example, redirect to a payment page
-    window.location.href = 'payment.html';
-}
-
-
-
-window.onload = populateUserDetails;
-
+    window.onload = populateUserDetails;
     </script>
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/user-summary.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>User Summary | GeoInsight</title>
 </head>
 <body>
@@ -116,12 +117,12 @@
                     <h1>GeoInsight</h1>
                 </div>
                 <div class="footer-pages">
-                    <a href="">Home</a>
-                    <a href="">About Us</a>
-                    <a href="">Products</a>
-                    <a href="">Contact Us</a>
-                    <a href="">Login</a>
-                    <a href="">My Cart</a>
+                    <a href="index.html">Home</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="./Page/page.html">Products</a>
+                    <a href="contactus.html">Contact Us</a>
+                    <a href="login.html">Login</a>
+                    <a href="mycart.html">My Cart</a>
                 </div>
             </div>
             <hr class="footer-divider">
@@ -129,51 +130,84 @@
         </div>
     </footer>
 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-       function populateUserDetails() {
-        const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
-        document.getElementById('summaryUserName').textContent = userDetails.userName;
-        document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
-        document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
-        document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
-        document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
-        document.getElementById('summaryUserArea').textContent = userDetails.userArea;
-        document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
-
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItemsBody = document.getElementById('cart-items');
-        let total = 0;
-
-        cartItemsBody.innerHTML = '';
-
-        cartItems.forEach((item, index) => {
-            const row = cartItemsBody.insertRow();
-            const cellImage = row.insertCell(0);
-            const cellName = row.insertCell(1);
-            const cellCategory = row.insertCell(2);
-            const cellPrice = row.insertCell(3);
-
-            const image = document.createElement('img');
-            image.src = item.tinyImage;
-            image.alt = item.name;
-            image.width = 80;
-            image.height = 80;
-            cellImage.appendChild(image);
-
-            cellName.innerText = item.name;
-            cellCategory.innerText = item.category;
-            cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
-
-            total += item.price;  
-        });
-        document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
-    }
-
-    function proceedToBuy() {
-        window.location.href = 'payment.html';
-    }
-
-    window.onload = populateUserDetails;
+        function populateUserDetails() {
+            const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
+            document.getElementById('summaryUserName').textContent = userDetails.userName;
+            document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
+            document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
+            document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
+            document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
+            document.getElementById('summaryUserArea').textContent = userDetails.userArea;
+            document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
+    
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsBody = document.getElementById('cart-items');
+            let total = 0;
+    
+            cartItemsBody.innerHTML = '';
+    
+            cartItems.forEach((item, index) => {
+                const row = cartItemsBody.insertRow();
+                const cellImage = row.insertCell(0);
+                const cellName = row.insertCell(1);
+                const cellCategory = row.insertCell(2);
+                const cellPrice = row.insertCell(3);
+    
+                const image = document.createElement('img');
+                image.src = item.tinyImage;
+                image.alt = item.name;
+                image.width = 80;
+                image.height = 80;
+                cellImage.appendChild(image);
+    
+                cellName.innerText = item.name;
+                cellCategory.innerText = item.category;
+                cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
+    
+                total += item.price;
+            });
+            document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
+        }
+    
+        function proceedToPay() {
+            const totalAmount = parseFloat(document.getElementById('totalAmount').textContent);
+            console.log('Total Amount:', totalAmount);
+    
+            var options = {
+                "key": "rzp_test_xZasrjr05oB7pH",  
+                "amount": totalAmount * 100,  
+                "currency": "INR",
+                "name": "GeoInsight",
+                "description": "Payment for Order",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADhCAMAAADmr0l2AAABs1BMVEX////l5eXk5OTm5ubj4+Py8vL09PT/4Hb29vbw8PDu7u74+Pjq6ur8/PwgFwCZdAAAAAAkGgDZu1qTgk2XbwAUGCOGXSX/5HkdFQBTUE3/6KZdWlcnHAAhGAD/5n7/5HdINADvtwOkfAAZEgAvIgBCMAA2JwBlSwD4xyP/6pzJlQAOAAAzJQDutQAAAA4qHwBoRQD/3Wq0hwEzIAD/0i/fqAAWCQAiIiT/63wAAByLZAB7WAAUDQBROgBEMQAAABe+jQKIXAD/218ACicSExXgqQCMiIO8uLR5WwAZAAChnZnRz812cWt7UAD/3XzcmQDrxWz900dhQQAdHiA3LR55RwD37+Lovj745cBTS0FBJQDOqDpbXmesqKSLcSY/PjtoYUfXvG5xWxrBqWniv4ZsaWbaxaSbcyWIfleSiHqwm2TouSntylyhgj0aIDCYextQPyVoShm9pEvLpj6UiGC4lTnexGBaMACdfUztzXl3bldUTTk6NDY2MCtIKACHZjXJu6yvlXPdsl7WqR782JT6ym67fwD99+fatUJ9aipyWzpvZVkoDQD/3Vm6mF4AACQ5FwDdQP6OAAAX8ElEQVR4nO1djWPaRrKXEAiQBBYJFFzbYEHALhjbIcHYBGwn4cNBjtOaNImT5ziu616aj77XNE3rNO67d257vbbX3p/8dlefgABJSLKTduurOmfsn0e7M7MzOzOLYRhG4wROgidDEIRI+gSSAQ8fIGnwJASSFEkXgVPg4cEJV0Ah/QIZAKQfkBQgMYH0KKSTeBDg3Wcw4MJdCBDHESAgfQKJAAGJAAWSBCRCwEXADtIvkOA3ioC4AIiLgBLpGB6O0TTtoyiKpOkAeFCBHpIED18vyVCUH5AeQIJfQVM9pAd8yE9RTBfZC2ArHoUBnuGL8rhwN3wzbtyF3gwgMYFEb0YgA4CEb4ZRSDQTLhcOZ8KNu+FMEC4XnBgfIOFM4C6XOBMSgKN4YKm/FbJkGs+SGYRLXZElQhAtSZZwWZYsm0EjeBgJhsfjAf/2gYfHZ46ED4/y0CBHBDCN16VFdb0Zl/DqhaUmk4NmwiXMBNBqbofxIMDbIUsj2UG3y92hnVyd2snVoZ0AiV6hQHoUUnijLuGNusQ36nKLAIIsyaRTeC6MYRgqEAh4wJMGT/Dwg4cfPAM9JA0eHvCkFJJUSB94+ISf6SIhAKkAOIo3kplwiUtNWAmQVO9IwIe",
+    
+                "handler": function (response) {
+                    console.log(response);
+                    window.location.href = "verification.html";
+                },
+                "prefill": {
+                    "name": "GeoInsight",
+                },
+                "notes": {
+                    "address": "GeoInsight - India's Largest Geotagged Website"
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
+            };
+    
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    
+        function cancel() {
+            window.location.href = "./index.html";
+        }
+    
+        window.onload = populateUserDetails;
     </script>
+    
 </body>
 </html>

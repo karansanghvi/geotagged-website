@@ -8,8 +8,166 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/mycart.css">
-    <script src="cart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>    
     <title>GeoInsight | Your Cart</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('buyNow').addEventListener('click', proceedToBuy);
+            const cartItemsBody = document.getElementById('cart-items');
+            const totalAmount = document.getElementById('totalAmount');
+            let total = 0;
+
+            $.ajax({
+                type: 'GET',
+                url: './backend/cartFunctions/getFromCart.php',
+                success: function (response) {
+                    if (response.success) {
+                        const cartItems = response.cartItems;
+
+                        cartItems.forEach((item) => {
+                            const row = cartItemsBody.insertRow();
+                            const cellImage = row.insertCell(0);
+                            const cellName = row.insertCell(1);
+                            const cellCategory = row.insertCell(2);
+                            const cellPrice = row.insertCell(3);
+                            const cellQuantity = row.insertCell(4);
+                            const cellAction = row.insertCell(5);
+
+                            const image = document.createElement('img');
+                            image.src = item.tinyImage;
+                            image.alt = item.name;
+                            image.width = 80;
+                            image.height = 80;
+                            cellImage.appendChild(image);
+
+                            cellName.innerText = item.name;
+                            cellCategory.innerText = item.category;
+                            cellPrice.innerText = `₹ ${item.price}`;
+
+                            const quantityContainer = document.createElement('div');
+                            quantityContainer.classList.add('quantityContainer');
+
+                            const minusButton = document.createElement('button');
+                            minusButton.innerText = '-';
+                            minusButton.classList.add('minusButton');
+                            minusButton.addEventListener('click', () => updateQuantity(item.name, -1));
+                            quantityContainer.appendChild(minusButton);
+
+                            const quantityDisplay = document.createElement('span');
+                            quantityDisplay.innerText = item.quantity;
+                            quantityContainer.appendChild(quantityDisplay);
+
+                            const plusButton = document.createElement('button');
+                            plusButton.innerText = '+';
+                            plusButton.classList.add('plusButton');
+                            plusButton.addEventListener('click', () => updateQuantity(item.name, 1));
+                            quantityContainer.appendChild(plusButton);
+
+                            cellQuantity.appendChild(quantityContainer);
+
+                            const removeButton = document.createElement('button');
+                            removeButton.innerText = 'Remove';
+                            removeButton.addEventListener('click', () => removeItem(item.name));
+                            cellAction.appendChild(removeButton);
+
+                            if (!isNaN(item.price)) {
+                                total += parseFloat(item.price * item.quantity);
+                            }
+                            console.log(item.quantity);
+                        });
+
+                        totalAmount.innerText = `₹ ${total.toFixed(2)}`;
+                        
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    console.error('Failed to fetch cart items.');
+                },
+            });
+
+            function removeItem(productName) {
+                $.ajax({
+                    type: 'POST',
+                    url: './backend/cartFunctions/removeFromCart.php',
+                    data: {
+                        productName: productName,
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = 'mycart.html';
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response.message);
+                    },
+                });
+            }
+
+            function updateQuantity(productName,qty){
+                $.ajax({
+                    type: 'POST',
+                    url: './backend/cartFunctions/updateCart.php',
+                    data:{
+                        productName: productName,
+                        quantity: qty,
+                    },
+                    success: function(response){
+                        if(response.success){
+                            if(response.newQuantity==0){
+                                removeItem(productName);
+                            }
+                            window.location.href='mycart.html';
+                        }
+                        else{
+                            alert(response.message);
+                        }
+                    },
+                    error: function(response){
+                        console.log("Nothing happening");
+                    }
+                });
+            }
+
+            function proceedToBuy() {
+                $.ajax({
+                    type: 'POST',
+                    url: './backend/cartFunctions/proceedToBuy.php',
+                    dataType: 'json', 
+                    success: function(response) {
+                        if (response.success) {
+                            $.ajax({
+                                type: 'POST',
+                                url: './backend/checkCustomerDetails.php',
+                                dataType: 'json', 
+                                success: function(response) {
+                                    if (response.found==false) {
+                                        window.location.href = 'customerdetails.html';
+                                    } else{
+                                        window.location.href = 'user-summary.html';
+                                    }
+                                },
+                                error: function() {
+                                    alert('Some error occurred in the second AJAX call.');
+                                }
+                            });
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Some error occurred in the first AJAX call.');
+                    }
+                });
+            }
+
+        });
+    </script>
+
     
 </head>
 <body>
@@ -38,7 +196,7 @@
                       <a href="login.html">Login</a>
                     </li>
                     <li>
-                      <a href="" class="header-button">My Cart</a>
+                      <a href="mycart.html" class="header-button">My Cart</a>
                     </li>
                 </ul>
             </nav>
@@ -60,6 +218,7 @@
                         <th>Product Name</th>
                         <th>Product Category</th>
                         <th>Product Price</th>
+                        <th>Quantity</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -68,7 +227,7 @@
             <div class="total-price">Total: <span id="totalAmount">&#8377; 0.00</span></div>
             
             
-            <button id="buyNow" onclick="proceedToBuy()">Proceed to Buy</button>
+            <button id="buyNow">Proceed to Buy</button>
         </div>
     </main>
 
@@ -94,59 +253,3 @@
    
 </body>
 </html>
-<script>
-       
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
- 
-  const cartTable = document.getElementById('cart-table');
-  const cartItemsBody = document.getElementById('cart-items');
-  const totalAmount = document.getElementById('totalAmount');
-  let total = 0;
-
-  cartItems.forEach((item, index) => {
-      const row = cartItemsBody.insertRow();
-      const cellImage = row.insertCell(0);
-      const cellName = row.insertCell(1);
-      const cellCategory = row.insertCell(2);
-      const cellPrice = row.insertCell(3);
-      const cellAction = row.insertCell(4);
-
-    
-      const image = document.createElement('img');
-      image.src = item.tinyImage;
-      image.alt = item.name;
-      image.width = 80;
-      image.height = 80;
-      cellImage.appendChild(image);
-
-      
-      cellName.innerText = item.name;
-      cellCategory.innerText = item.category;
-      cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
-
-      const removeButton = document.createElement('button');
-      removeButton.innerText = 'Remove';
-      removeButton.addEventListener('click', () => removeItem(index));
-      cellAction.appendChild(removeButton);
-
-      
-      total += item.price;
-  });
-
-  
-  totalAmount.innerText = `₹ ${total.toFixed(2)}`;
-
-  
-  function removeItem(index) {
-      cartItems.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cartItems));
-      location.reload(); s
-  }
-
-  
-  function proceedToBuy() {
-      
-      window.location.href = './customerdetails.html';
-  }
-</script>

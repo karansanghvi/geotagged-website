@@ -31,9 +31,11 @@
             }
 
             if (response.isLoggedIn) {
-                $('.loginLogout').text('Log Out').attr('href', './backend/logoutProcess.php');
-            } else {
-              $('.loginLogout').text('Login').attr('href', 'login.html');
+                $('.indexReload').text('Log Out').attr('href', './backend/logoutProcess.php');
+                $('.indexCart').show();
+            } else{
+              $('.indexReload').text('Login').attr('href', 'login.html');
+              $('.indexCart').hide();
             }
           },
           error: function () {
@@ -96,10 +98,10 @@
                   <a href="contactus.html">Contact Us</a>
                 </li>
                 <li>
-                  <a href="login.html" class="loginLogout">Login</a>
+                  <a href="login.html" class="indexReload">Login</a>
                 </li>
                 <li>
-                  <a href="" class="header-button">My Cart</a>
+                  <a href="mycart.html" class="header-button indexCart">My Cart</a>
                 </li>
             </ul>
         </nav>

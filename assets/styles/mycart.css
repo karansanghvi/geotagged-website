@@ -143,6 +143,7 @@ main {
     border-radius: 8px;
     width: 80%;
     box-sizing: border-box;
+    text-align: center;
 }
 
 h1 {
@@ -157,16 +158,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-#cart-table th, #cart-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-#cart-table th {
-    background-color: #f2f2f2;
-}
-
 #cart-table img {
     max-width: 80px;
     max-height: 80px;
@@ -175,10 +166,6 @@ h1 {
 .total-price {
     font-size: 18px;
     margin-bottom: 20px;
-}
-
-#totalAmount {
-    font-weight: bold;
 }
 
 #proceedToBuy {
@@ -195,22 +182,47 @@ h1 {
     opacity: 0.8;
 }
 
+
+#cart-table th, #cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#cart-table th {
+    background-color: #f2f2f2;
+}
+
+#totalAmount {
+    font-weight: bold;
+}
+
 #buyNow {
-    display: block;
-    margin: 20px auto; 
-    padding: 15px 30px; 
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: hsl(12, 98%, 52%);
-    color: #fff; 
-    font-size: 18px; 
+    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #buyNow:hover {
     background-color: hsl(12, 98%, 52%);
 }
+
+.quantityContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.minusButton,.plusButton{
+    padding: 10px;
+}
+
 
 /* footer */
 .footer {
@@ -277,3 +289,4 @@ h1 {
         margin-right: 20px; 
     }
 }
+

@@ -9,6 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/customerdetails.css">
     <title>GeoInsight | Customer Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    
+    <script>
+      function cancel() {
+        window.location.href = './index.html';
+      }
+
+      $(document).ready(function () {
+        $('form').submit(function (e) {
+          e.preventDefault();
+
+          var formData = $(this).serialize();
+
+          $.ajax({
+            type: 'POST',
+            url: './backend/insertCustomerDetails.php',
+            data: formData,
+            success: function (response) {
+              if (response.error) {
+                alert(response.message);
+              } else{
+                window.location.href = 'user-summary.html';
+              }
+            },
+            error: function () {
+              console.error('AJAX request failed');
+            }
+          });
+        });
+      });
+    </script>
 </head>
 <body>
     <header>
@@ -51,12 +83,11 @@
         <div class="user-details-container">
             <h1>Enter Your Details</h1>
            
-            <form id="userDetailsForm">
-                <label for="userName"><b>Full Name:</b></label>
+            <form id="userDetailsForm" method="POST" action="./backend/insertCustomerDetails.php">
+                <!-- <label for="userName"><b>Full Name:</b></label>
                 <input type="text" id="userName" name="userName" required>
-
                 <label for="userMobile"><b>Mobile Number:</b></label>
-                <input type="tel" id="userMobile" name="userMobile" required>
+                <input type="tel" id="userMobile" name="userMobile" required> -->
 
                 <label for="userPincode"><b>Pincode:</b></label>
                 <input type="text" id="userPincode" name="userPincode" required>
@@ -75,7 +106,7 @@
 
                
                 <div class="button-container">
-                    <button type="button" onclick="proceedToPay()" id="button">Proceed to Pay</button>
+                    <button type="submit" id="button">Proceed to Pay</button>
                     <button type="button" onclick="cancel()" id="button">Cancel</button>
                 </div>
             </form>
@@ -102,23 +133,5 @@
           </div>
         
     </footer>
-    <script>
-      function cancel() {
-        window.location.href = './index.html';
-      }
-      function proceedToPay() {
-        const userDetails = {
-            userName: document.getElementById('userName').value,
-            userMobile: document.getElementById('userMobile').value,
-            userPincode: document.getElementById('userPincode').value,
-            userFlat: document.getElementById('userFlat').value,
-            userBuilding: document.getElementById('userBuilding').value,
-            userArea: document.getElementById('userArea').value,
-            userLandmark: document.getElementById('userLandmark').value,
-        };
-        sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
-        window.location.href = 'user-summary.html';
-      }
-    </script>
 </body>
 </html>

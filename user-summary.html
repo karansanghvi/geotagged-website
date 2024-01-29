@@ -9,8 +9,102 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/user-summary.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>   
     <title>User Summary | GeoInsight</title>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "./backend/fetchCustomerDetails.php",
+                success: function (response) {
+                    if (response.addressDetails && response.userDetails && response.cartItems) {
+                        const userAddress = response.addressDetails;
+                        const userDetails = response.userDetails;
+                        const cartItems = response.cartItems;
+                        console.log(cartItems);
+                        populateUserDetails(userDetails,userAddress,cartItems);
+                    }
+                },
+                error: function (response) {
+                    console.error("Error fetching customer details:", response);
+                },
+            });
+        });
+
+        function populateUserDetails(userDetails, userAddress, cartItems) {
+            $("#summaryUserName").text(userDetails.firstName + " " + userDetails.lastName);
+            $("#summaryUserMobile").text(userDetails.userMobile);
+            $("#summaryUserFlat").text(userAddress.flatHouseNo);
+            $("#summaryUserBuilding").text(userAddress.building);
+            $("#summaryUserArea").text(userAddress.area);
+            $("#summaryUserPincode").text(userAddress.pincode);
+            $("#summaryUserLandmark").text(userAddress.landmark);
+
+            const cartTableBody = $("#cart-items");
+            cartTableBody.empty();
+            let total = 0;
+
+            cartItems.forEach((item) => {
+                const row = $("<tr></tr>");
+
+                const cellImage = $("<td></td>").html(`<img src="${item.tinyImage}" alt="Product Image" style="width: 50px; height: 50px;">`);
+                const cellName = $("<td></td>").text(item.name);
+                const cellCategory = $("<td></td>").text(item.category);
+                const cellPrice = $("<td></td>").text(`₹ ${item.price}`);
+                const cellQuantity = $("<td></td>").text(item.quantity);
+
+                row.append(cellImage, cellName, cellCategory, cellPrice, cellQuantity);
+                cartTableBody.append(row);
+                if (!isNaN(item.price)) {
+                    total += parseFloat(item.price * item.quantity);
+                }
+            });
+
+            $("#totalAmount").text(`${total.toFixed(2)}`);
+        }
+
+
+        function proceedToPay() {
+            const totalAmount = parseFloat(document.getElementById('totalAmount').textContent);
+            console.log('Total Amount:', totalAmount);
+    
+            var options = {
+                "key": "rzp_test_xZasrjr05oB7pH",  
+                "amount": totalAmount * 100,  
+                "currency": "INR",
+                "name": "GeoInsight",
+                "description": "Payment for Order",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADhCAMAAADmr0l2AAABs1BMVEX////l5eXk5OTm5ubj4+Py8vL09PT/4Hb29vbw8PDu7u74+Pjq6ur8/PwgFwCZdAAAAAAkGgDZu1qTgk2XbwAUGCOGXSX/5HkdFQBTUE3/6KZdWlcnHAAhGAD/5n7/5HdINADvtwOkfAAZEgAvIgBCMAA2JwBlSwD4xyP/6pzJlQAOAAAzJQDutQAAAA4qHwBoRQD/3Wq0hwEzIAD/0i/fqAAWCQAiIiT/63wAAByLZAB7WAAUDQBROgBEMQAAABe+jQKIXAD/218ACicSExXgqQCMiIO8uLR5WwAZAAChnZnRz812cWt7UAD/3XzcmQDrxWz900dhQQAdHiA3LR55RwD37+Lovj745cBTS0FBJQDOqDpbXmesqKSLcSY/PjtoYUfXvG5xWxrBqWniv4ZsaWbaxaSbcyWIfleSiHqwm2TouSntylyhgj0aIDCYextQPyVoShm9pEvLpj6UiGC4lTnexGBaMACdfUztzXl3bldUTTk6NDY2MCtIKACHZjXJu6yvlXPdsl7WqR782JT6ym67fwD99+fatUJ9aipyWzpvZVkoDQD/3Vm6mF4AACQ5FwDdQP6OAAAX8ElEQVR4nO1djWPaRrKXEAiQBBYJFFzbYEHALhjbIcHYBGwn4cNBjtOaNImT5ziu616aj77XNE3rNO67d257vbbX3p/8dlefgABJSLKTduurOmfsn0e7M7MzOzOLYRhG4wROgidDEIRI+gSSAQ8fIGnwJASSFEkXgVPg4cEJV0Ah/QIZAKQfkBQgMYH0KKSTeBDg3Wcw4MJdCBDHESAgfQKJAAGJAAWSBCRCwEXADtIvkOA3ioC4AIiLgBLpGB6O0TTtoyiKpOkAeFCBHpIED18vyVCUH5AeQIJfQVM9pAd8yE9RTBfZC2ArHoUBnuGL8rhwN3wzbtyF3gwgMYFEb0YgA4CEb4ZRSDQTLhcOZ8KNu+FMEC4XnBgfIOFM4C6XOBMSgKN4YKm/FbJkGs+SGYRLXZElQhAtSZZwWZYsm0EjeBgJhsfjAf/2gYfHZ46ED4/y0CBHBDCN16VFdb0Zl/DqhaUmk4NmwiXMBNBqbofxIMDbIUsj2UG3y92hnVyd2snVoZ0AiV6hQHoUUnijLuGNusQ36nKLAIIsyaRTeC6MYRgqEAh4wJMGT/Dwg4cfPAM9JA0eHvCkFJJUSB94+ISf6SIhAKkAOIo3kplwiUtNWAmQVO9IwIe",
+    
+                "handler": function (response) {
+                    console.log(response);
+                    window.location.href = "verification.html";
+                },
+                "prefill": {
+                    "name": "GeoInsight",
+                },
+                "notes": {
+                    "address": "GeoInsight - India's Largest Geotagged Website"
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
+            };
+    
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    
+        function cancel() {
+            window.location.href = "./index.html";
+        }
+    
+        window.onload = populateUserDetails;
+    </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -63,15 +157,15 @@
                 <tr>
                     <td><Strong>Address:</Strong></td>
                     <td>
-                        Flat NO: <span id="summaryUserFlat"></span>,
+                        <b>Flat NO:</b> <span id="summaryUserFlat"></span>,
                         <br>
-                        Building NO: </strong><span id="summaryUserBuilding"></span>,
+                        <b>Building NO:</b> </strong><span id="summaryUserBuilding"></span>,
                         <br>
-                        Area, Street, Sector, Village: <span id="summaryUserArea"></span>,
+                        <b>Area, Street, Sector, Village:</b> <span id="summaryUserArea"></span>,
                         <br>
-                        Pincode: <span id="summaryUserPincode"></span>,
+                        <b>Pincode:</b> <span id="summaryUserPincode"></span>,
                         <br>
-                        Landmark: <span id="summaryUserLandmark"></span></td>
+                        <b>Landmark:</b> <span id="summaryUserLandmark"></span></td>
                     </td>
                 </tr>
             </table>
@@ -94,6 +188,7 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                         </tr>
                     </thead>
                     <tbody id="cart-items"></tbody>
@@ -130,84 +225,6 @@
         </div>
     </footer>
 
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        function populateUserDetails() {
-            const userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
-            document.getElementById('summaryUserName').textContent = userDetails.userName;
-            document.getElementById('summaryUserMobile').textContent = userDetails.userMobile;
-            document.getElementById('summaryUserPincode').textContent = userDetails.userPincode;
-            document.getElementById('summaryUserFlat').textContent = userDetails.userFlat;
-            document.getElementById('summaryUserBuilding').textContent = userDetails.userBuilding;
-            document.getElementById('summaryUserArea').textContent = userDetails.userArea;
-            document.getElementById('summaryUserLandmark').textContent = userDetails.userLandmark;
-    
-            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartItemsBody = document.getElementById('cart-items');
-            let total = 0;
-    
-            cartItemsBody.innerHTML = '';
-    
-            cartItems.forEach((item, index) => {
-                const row = cartItemsBody.insertRow();
-                const cellImage = row.insertCell(0);
-                const cellName = row.insertCell(1);
-                const cellCategory = row.insertCell(2);
-                const cellPrice = row.insertCell(3);
-    
-                const image = document.createElement('img');
-                image.src = item.tinyImage;
-                image.alt = item.name;
-                image.width = 80;
-                image.height = 80;
-                cellImage.appendChild(image);
-    
-                cellName.innerText = item.name;
-                cellCategory.innerText = item.category;
-                cellPrice.innerText = `₹ ${item.price.toFixed(2)}`;
-    
-                total += item.price;
-            });
-            document.getElementById('totalAmount').textContent = `${total.toFixed(2)}`;
-        }
-    
-        function proceedToPay() {
-            const totalAmount = parseFloat(document.getElementById('totalAmount').textContent);
-            console.log('Total Amount:', totalAmount);
-    
-            var options = {
-                "key": "rzp_test_xZasrjr05oB7pH",  
-                "amount": totalAmount * 100,  
-                "currency": "INR",
-                "name": "GeoInsight",
-                "description": "Payment for Order",
-                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADhCAMAAADmr0l2AAABs1BMVEX////l5eXk5OTm5ubj4+Py8vL09PT/4Hb29vbw8PDu7u74+Pjq6ur8/PwgFwCZdAAAAAAkGgDZu1qTgk2XbwAUGCOGXSX/5HkdFQBTUE3/6KZdWlcnHAAhGAD/5n7/5HdINADvtwOkfAAZEgAvIgBCMAA2JwBlSwD4xyP/6pzJlQAOAAAzJQDutQAAAA4qHwBoRQD/3Wq0hwEzIAD/0i/fqAAWCQAiIiT/63wAAByLZAB7WAAUDQBROgBEMQAAABe+jQKIXAD/218ACicSExXgqQCMiIO8uLR5WwAZAAChnZnRz812cWt7UAD/3XzcmQDrxWz900dhQQAdHiA3LR55RwD37+Lovj745cBTS0FBJQDOqDpbXmesqKSLcSY/PjtoYUfXvG5xWxrBqWniv4ZsaWbaxaSbcyWIfleSiHqwm2TouSntylyhgj0aIDCYextQPyVoShm9pEvLpj6UiGC4lTnexGBaMACdfUztzXl3bldUTTk6NDY2MCtIKACHZjXJu6yvlXPdsl7WqR782JT6ym67fwD99+fatUJ9aipyWzpvZVkoDQD/3Vm6mF4AACQ5FwDdQP6OAAAX8ElEQVR4nO1djWPaRrKXEAiQBBYJFFzbYEHALhjbIcHYBGwn4cNBjtOaNImT5ziu616aj77XNE3rNO67d257vbbX3p/8dlefgABJSLKTduurOmfsn0e7M7MzOzOLYRhG4wROgidDEIRI+gSSAQ8fIGnwJASSFEkXgVPg4cEJV0Ah/QIZAKQfkBQgMYH0KKSTeBDg3Wcw4MJdCBDHESAgfQKJAAGJAAWSBCRCwEXADtIvkOA3ioC4AIiLgBLpGB6O0TTtoyiKpOkAeFCBHpIED18vyVCUH5AeQIJfQVM9pAd8yE9RTBfZC2ArHoUBnuGL8rhwN3wzbtyF3gwgMYFEb0YgA4CEb4ZRSDQTLhcOZ8KNu+FMEC4XnBgfIOFM4C6XOBMSgKN4YKm/FbJkGs+SGYRLXZElQhAtSZZwWZYsm0EjeBgJhsfjAf/2gYfHZ46ED4/y0CBHBDCN16VFdb0Zl/DqhaUmk4NmwiXMBNBqbofxIMDbIUsj2UG3y92hnVyd2snVoZ0AiV6hQHoUUnijLuGNusQ36nKLAIIsyaRTeC6MYRgqEAh4wJMGT/Dwg4cfPAM9JA0eHvCkFJJUSB94+ISf6SIhAKkAOIo3kplwiUtNWAmQVO9IwIe",
-    
-                "handler": function (response) {
-                    console.log(response);
-                    window.location.href = "verification.html";
-                },
-                "prefill": {
-                    "name": "GeoInsight",
-                },
-                "notes": {
-                    "address": "GeoInsight - India's Largest Geotagged Website"
-                },
-                "theme": {
-                    "color": "#F37254"
-                }
-            };
-    
-            var rzp = new Razorpay(options);
-            rzp.open();
-        }
-    
-        function cancel() {
-            window.location.href = "./index.html";
-        }
-    
-        window.onload = populateUserDetails;
-    </script>
     
 </body>
 </html>

@@ -9,35 +9,82 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | Elephant Pair Terracotta</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-      function addToCart(productName, category, price) {
-          let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-          const item = {
-              name: productName,
-              category: category,
-              price: price,
-              tinyImage: '../../assets/images/product_images/clay_craft/1619420247770terracotta.jpg'
-          };
-
-          cart.push(item);
-          localStorage.setItem('cart', JSON.stringify(cart));
-
-          alert(`Added ${productName} to the cart!`);
-          console.log(`Added ${productName} to the cart!`);
-
-          redirectToCart();
+      function addToCart(productName, category, price,tinyImage) {
+        $.ajax({
+          type: 'POST',
+          url: '../../backend/checkSession.php',  
+          success: function(response) {
+            if (response.sessionData.loggedIn) {
+              addToCartInternal(productName, category, price,tinyImage);
+            } else {
+              window.location.href = '../../login.html'; 
+            }
+          },
+          error: function() {
+            console.error('Session check failed');
+          }
+        });
       }
 
-      function redirectToCart() {
-          setTimeout(() => {
-              window.location.href = '../../mycart.html';
-          }, 500);
+      function addToCartInternal(productName, category, price, tinyImage) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/cartFunctions/addToCart.php',
+            data: {
+                productName: productName,
+                category: category,
+                price: price,
+                tinyImage: tinyImage
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function() {
+                console.error('Failed to add product to cart.');
+            }
+        });
       }
 
-      function redirectToBuyNow() {
-          window.location.href = '../../mybuynow.html';
+      function buyNow(productName, category, price, tinyImage){
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/cartFunctions/addToCart.php',
+            data: {
+                productName: productName,
+                category: category,
+                price: price,
+                tinyImage: tinyImage
+            },
+            success: function(response) {
+                if (response.success) {
+                    window.location.href = '../../mycart.html';
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function() {
+                console.error('Failed to add product to cart.');
+            }
+        });
       }
+
+
+      // function redirectToCart() {
+      //     setTimeout(() => {
+      //         window.location.href = '../../mycart.html';
+      //     }, 500);
+      // }
+
+      // function redirectToBuyNow() {
+      //     window.location.href = '../../mybuynow.html';
+      // }
   </script>
 </head>
 <body>

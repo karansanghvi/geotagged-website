@@ -8,6 +8,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>GeoInsight | About Us</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+      // $(document).ready(function () {
+        $.ajax({
+          type: 'POST',
+          url: './backend/indexReload.php',
+          success: function (response) {
+            if (response.isLoggedIn) {
+                $('.indexReload').text('Log Out').attr('href', './backend/logoutProcess.php');
+                $('.indexCart').show();
+            } else{
+              $('.indexReload').text('Login').attr('href', 'login.html');
+              $('.indexCart').hide();
+            }
+          },
+          error: function () {
+            console.error('AJAX request failed');
+          }
+        });
+      // });
+    </script>
+
 </head>
 <body>
     <header>
@@ -19,22 +42,22 @@
         <nav>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html" class="active">Home</a>
                 </li>
                 <li>
-                    <a href="aboutus.html" class="active">About Us</a>
+                    <a href="aboutus.html">About Us</a>
                 </li>
                 <li>
                   <a href="Page/page.html">Products</a>
                 </li>
                 <li>
-                  <a href="">Contact Us</a>
+                  <a href="contactus.html">Contact Us</a>
                 </li>
                 <li>
-                  <a href="login.html">Login</a>
+                  <a href="login.html" class="indexReload">Login</a>
                 </li>
                 <li>
-                  <a href="" class="header-button">My Cart</a>
+                  <a href="mycart.html" class="header-button indexCart">My Cart</a>
                 </li>
             </ul>
         </nav>

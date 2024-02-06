@@ -20,11 +20,13 @@ if (mysqli_num_rows($checkResult) > 0) {
     if ($updateResult) {
         $response['success'] = true;
         $response['message'] = "Quantity updated in cart successfully!";
+        $response['sessionData'] = $_SESSION;
     } else {
         $response['success'] = false;
         $response['message'] = "Error updating quantity in cart.";
+        $response['sessionData'] = $_SESSION;
     }
-} else {
+}else{
     $insertSql = "INSERT INTO cart (productName, category, price, imageLink, userID, quantity) 
                   VALUES ('$productName', '$category', '$price', '$tinyImage', '$userID', 1)";
     $insertResult = mysqli_query($conn, $insertSql);

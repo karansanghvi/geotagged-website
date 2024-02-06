@@ -19,6 +19,21 @@
             let total = 0;
 
             $.ajax({
+                type: 'POST',
+                url: './backend/indexReload.php',
+                success: function (response) {
+                    if (response.isLoggedIn) {
+                        
+                    } else{
+                        window.location.href = 'login.html';
+                    }
+                },
+                error: function () {
+                    console.error('AJAX request failed');
+                }
+            });
+
+            $.ajax({
                 type: 'GET',
                 url: './backend/cartFunctions/getFromCart.php',
                 success: function (response) {

@@ -3,11 +3,11 @@
     height: auto;
 }
 
-.product-grid {
+/* .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
-}
+} */
 
 .product-price {
     color: hsl(12, 98%, 52%);

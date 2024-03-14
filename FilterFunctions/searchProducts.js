@@ -3,35 +3,41 @@ function searchProducts() {
     const categoryForm = document.getElementById('categoryForm');
     const minPrice = parseFloat(document.getElementById('minPrice').value);
     const maxPrice = parseFloat(document.getElementById('maxPrice').value);
+    const selectedCategories = Array.from(categoryForm.querySelectorAll('input[name="category"]:checked')).map(checkbox => checkbox.value);
     
-    if (categoryForm) {
-        const allCategoryCheckbox = document.getElementById('allCategory');
-        const selectedCategories = Array.from(categoryForm.querySelectorAll('input[name="category"]:checked')).map(checkbox => checkbox.value);
-
-        if (allCategoryCheckbox.checked) {
-            updateProducts(data.filter(product =>
-                product.title.toLowerCase().includes(searchInput) &&
-                (!minPrice || product.newPrice >= minPrice) &&
-                (!maxPrice || product.newPrice <= maxPrice)
-            ));
-        } else {
-            if (selectedCategories.length === 0) {
-                productsContainer.innerHTML = '';
-                const noResultsMessage = document.createElement('p');
-                noResultsMessage.textContent = 'No results found.';
-                productsContainer.appendChild(noResultsMessage);
-            } else {
-                const filteredProducts = data.filter(product =>
-                    (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
-                    product.title.toLowerCase().includes(searchInput) &&
-                    (!minPrice || product.newPrice >= minPrice) &&
-                    (!maxPrice || product.newPrice <= maxPrice)
-                );
-                updateProducts(filteredProducts);
-            }
-        }
-    }
+    fetch('../backend/fetchProducts.php')
+        .then(response => response.json())
+        .then(data => {
+            const filteredProducts = filterProducts(data, searchInput, minPrice, maxPrice, selectedCategories);
+            updateProducts(filteredProducts);
+        })
+        .catch(error => {
+            console.error('Error fetching products:', error);
+        });
 }
+
+
+function filterProducts(data, searchInput, minPrice, maxPrice, selectedCategories) {
+    if (selectedCategories.length === 0) {
+        return [];
+    }
+
+    if (selectedCategories.includes("all")) {
+        return data.filter(product =>
+            product.title.toLowerCase().includes(searchInput) &&
+            (!minPrice || product.newPrice >= minPrice) &&
+            (!maxPrice || product.newPrice <= maxPrice)
+        );
+    }
+
+    return data.filter(product =>
+        selectedCategories.includes(product.category) &&
+        product.title.toLowerCase().includes(searchInput) &&
+        (!minPrice || product.newPrice >= minPrice) &&
+        (!maxPrice || product.newPrice <= maxPrice)
+    );
+}
+
 
 function updateProducts(filteredProducts) {
     productsContainer.innerHTML = '';
@@ -46,11 +52,18 @@ function updateProducts(filteredProducts) {
             productCard.className = 'productCard';
             productCard.innerHTML = `
                 <div class="product">
-                    <img src="${product.img}" alt="${product.title}">
+                    <img src="${product.imageLink}" alt="${product.title}">
                     <h3>${product.title}</h3>
-                    <p class="prevPrice">${product.prevPrice}</p>
-                    <p>${product.newPrice}</p>
-                    <p><a href="${product.link}" target="_blank">View Details</a></p>
+                    <div class="productPrice">
+                        <div class="product-grid">
+                            <p class="prevPrice">₹${product.prevPrice}</p>
+                        </div>
+                        <div>
+                            <p class="product-price">₹${product.newPrice}</p>
+                        </div>
+                    </div>
+                    <p>Catgeory: ${product.category}</p>
+                    <p><a href="${product.pageLink}" target="_blank">View Details</a></p>
                 </div>
             `;
 

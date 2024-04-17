@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Selection</title>
+    <link rel="stylesheet" href="./assets/styles/states.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Select a State or UT</h1>
+    <div id="stateButtons">
+        <button class="state-btn" value="Andhra Pradesh" data-state="Andhra Pradesh">Andhra Pradesh</button>
+        <button class="state-btn" value="Arunachal Pradesh" data-state="Arunachal Pradesh">Arunachal Pradesh</button>
+        <button class="state-btn" value="Assam" data-state="Assam">Assam</button>
+        <button class="state-btn" value="Bihar" data-state="Bihar">Bihar</button>
+        <button class="state-btn" value="Chhattisgarh" data-state="Chhattisgarh">Chhattisgarh</button>
+        <button class="state-btn" value="Goa" data-state="Goa">Goa</button>
+        <button class="state-btn" value="Gujarat" data-state="Gujarat">Gujarat</button>
+        <button class="state-btn" value="Haryana" data-state="Haryana">Haryana</button>
+        <button class="state-btn" value="Himachal Pradesh" data-state="Himachal Pradesh">Himachal Pradesh</button>
+        <button class="state-btn" value="Jharkhand" data-state="Jharkhand">Jharkhand</button>
+        <button class="state-btn" value="Karnataka" data-state="Karnataka">Karnataka</button>
+        <button class="state-btn" value="Kerala" data-state="Kerala">Kerala</button>
+        <button class="state-btn" value="Madhya Pradesh" data-state="Madhya Pradesh">Madhya Pradesh</button>
+        <button class="state-btn" value="Maharashtra" data-state="Maharashtra">Maharashtra</button>
+        <button class="state-btn" value="Manipur" data-state="Manipur">Manipur</button>
+        <button class="state-btn" value="Meghalaya" data-state="Meghalaya">Meghalaya</button>
+        <button class="state-btn" value="Mizoram" data-state="Mizoram">Mizoram</button>
+        <button class="state-btn" value="Nagaland" data-state="Nagaland">Nagaland</button>
+        <button class="state-btn" value="Odisha" data-state="Odisha">Odisha</button>
+        <button class="state-btn" value="Punjab" data-state="Punjab">Punjab</button>
+        <button class="state-btn" value="Rajasthan" data-state="Rajasthan">Rajasthan</button>
+        <button class="state-btn" value="Sikkim" data-state="Sikkim">Sikkim</button>
+        <button class="state-btn" value="Tamil Nadu" data-state="Tamil Nadu">Tamil Nadu</button>
+        <button class="state-btn" value="Telangana" data-state="Telangana">Telangana</button>
+        <button class="state-btn" value="Tripura" data-state="Tripura">Tripura</button>
+        <button class="state-btn" value="Uttar Pradesh" data-state="Uttar Pradesh">Uttar Pradesh</button>
+        <button class="state-btn" value="Uttarakhand" data-state="Uttarakhand">Uttarakhand</button>
+        <button class="state-btn" value="West Bengal" data-state="West Bengal">West Bengal</button>
+        <button class="state-btn" value="Andaman and Nicobar Islands" data-state="Andaman and Nicobar Islands">Andaman and Nicobar Islands</button>
+        <button class="state-btn" value="Chandigarh" data-state="Chandigarh">Chandigarh</button>
+        <button class="state-btn" value="Dadra and Nagar Haveli and Daman and Diu" data-state="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</button>
+        <button class="state-btn" value="Lakshadweep" data-state="Lakshadweep">Lakshadweep</button>
+        <button class="state-btn" value="Delhi" data-state="Delhi">Delhi</button>
+        <button class="state-btn" value="Puducherry" data-state="Puducherry">Puducherry</button>
+        <button class="state-btn" value="All" data-state="all">All</button>
+    </div>
+    <form id="stateForm" action="#">
+        <input type="text" id="stateSearch" placeholder="Search for a State/UT...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<script>
+    const buttons = document.querySelectorAll('.state-btn');
+    const stateInput = document.getElementById('stateSearch');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('selected');
+        });
+    });
+
+    stateInput.addEventListener('input', () => {
+        const searchText = stateInput.value.toLowerCase();
+        const selectedStates = Array.from(document.querySelectorAll('.state-btn.selected')).map(button => button.dataset.state.toLowerCase());
+
+        buttons.forEach(button => {
+            const buttonValue = button.value.toLowerCase();
+            const buttonState = button.dataset.state.toLowerCase();
+            if (buttonValue.includes(searchText) || selectedStates.includes(buttonState)) {
+                button.style.display = 'inline-block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

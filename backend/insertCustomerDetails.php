@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $userLandmark = $_POST['userLandmark'];
     $userID = $_SESSION['userID'];
 
-    $sql = "INSERT INTO customerdetails(userID,pincode,flatHouseNo,building,area,landmark) 
+    $sql = "INSERT INTO customerdetail(userID,pincode,flatHouseNo,building,area,landmark) 
             values ('$userID','$userPincode','$userFlat','$userBuilding','$userArea','$userLandmark')";
     $result = mysqli_query($conn, $sql);
 

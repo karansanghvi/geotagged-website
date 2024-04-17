@@ -5,13 +5,13 @@ $response = array();
 
 $userID = $_SESSION["userID"];
 
-$sqlCustomerDetails = "SELECT * FROM `customerdetails` WHERE userID = '$userID'";
+$sqlCustomerDetails = "SELECT * FROM `customerdetail` WHERE userID = '$userID'";
 $resultCustomerDetails = mysqli_query($conn, $sqlCustomerDetails);
 
-$sqlUsers = "SELECT * FROM `users` WHERE userID = '$userID'";
+$sqlUsers = "SELECT * FROM `user` WHERE userID = '$userID'";
 $resultUsers = mysqli_query($conn, $sqlUsers);
 
-$cartSQL = "SELECT * from `cart` WHERE userID = '$userID'";
+$cartSQL = "SELECT * from `carttable` WHERE userID = '$userID'";
 $resultCart = mysqli_query($conn,$cartSQL);
 
 if ($resultCustomerDetails && $resultUsers && $resultCart) {

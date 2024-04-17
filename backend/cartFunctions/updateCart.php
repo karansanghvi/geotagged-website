@@ -9,13 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userID = $_SESSION["userID"];
         $quantity = $_POST['quantity'];
         
-        $sql = "UPDATE cart SET quantity = quantity + '$quantity' WHERE productName = '$productName' AND userID = '$userID'";
+        $sql = "UPDATE carttable SET quantity = quantity + '$quantity' WHERE productName = '$productName' AND userID = '$userID'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
             $response['success'] = true;
             $response['message'] = 'Quantity Updated';
-            $sql = "SELECT `quantity` FROM cart WHERE productName = '$productName' AND userID = '$userID'";
+            $sql = "SELECT `quantity` FROM carttable WHERE productName = '$productName' AND userID = '$userID'";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $row = mysqli_fetch_assoc($result);

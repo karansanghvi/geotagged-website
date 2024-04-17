@@ -6,6 +6,7 @@
     <title>GeoInsight | Products</title>
     <link rel="stylesheet" href="../assets/styles/page.css">
     <link rel="stylesheet" href="../assets/styles/main.css">
+    <link rel="stylesheet" href="../assets/styles/states.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -68,25 +69,33 @@
         </label>
     </header>
 
-        <div class="sidebar-main">
-            <nav class="sidebar-navigation">
-                <ul>
-                    <li>
-                        <div id="categoryFormContainer"></div>
-                    </li>
-                    <li>
-                        <div id="priceRangeContainer"></div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    <div class="product-side" style="margin-top: -580px;">
-        <div>
-            <div id="searchBarContainer"></div>
-        </div>
+    <div class="sidebar-main">
+      <nav class="sidebar-navigation">
+        <ul>
+          <li>
+            <div id="categoryFormContainer"></div>
+          </li>
+          <li>
+            <div id="priceRangeContainer"></div>
+          </li>
+        </ul>
+      </nav>
     </div>
+
+    <div class="product-side" style="margin-top: -580px;">
+      <div>
+        <div id="searchBarContainer"></div>
+      </div>
+    </div>
+
     <div class="all-products">
-        <div class="products"></div>
+      <div class="products"></div>
+    </div>
+
+    <div class="statesForm">
+      <div id="statesFormContainer">
+
+      </div>
     </div>
     <!-- footer -->
     <div class="footer">
@@ -110,18 +119,19 @@
     <script src="../db/database.js"></script>
     <script src="../FilterFunctions/searchBar.js"></script>
     <script src="../FilterFunctions/categoryForm.js"></script>
+    <script src="../FilterFunctions/statesForm.js"></script>
     <script src="../FilterFunctions/priceForm.js"></script>
     <script src="../FilterFunctions/productDisplay.js"></script>
     <script src="../FilterFunctions/searchProducts.js"></script>
+    <script src="../FilterFunctions/filterByStates.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             includeSearchBar();
             includeCategoryForm();
             includePriceRange();
+            includeStatesForm();
             searchProducts();
         });
-        
-
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', searchProducts);
     </script>

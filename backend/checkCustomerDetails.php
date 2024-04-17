@@ -4,7 +4,7 @@ include "dbconnect.php";
 $response = array();
 
 $userID = $_SESSION["userID"];
-$sql = "SELECT * FROM `customerDetails` where userID='$userID'";
+$sql = "SELECT * FROM `customerDetail` where userID='$userID'";
 $result = mysqli_query($conn,$sql);
 $detailsRow = mysqli_fetch_assoc($result);
 

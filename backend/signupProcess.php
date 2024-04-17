@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!preg_match($emailRegex, $userEmail)) {
         $response['error'] = "Invalid Email Address";
     } else {
-        $emailSql = "SELECT * FROM `users` WHERE userEmail ='$userEmail'"; 
+        $emailSql = "SELECT * FROM `user` WHERE userEmail ='$userEmail'"; 
         $existingUser = mysqli_query($conn, $emailSql);
 
         if (mysqli_num_rows($existingUser) > 0){
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     $response['error'] = "Invalid Password";
                 } else {
                     if($userPassword == $userConfirm) {
-                        $sql = "INSERT INTO users (firstName, lastName, userEmail, userMobile, userPassword) 
+                        $sql = "INSERT INTO user (firstName, lastName, userEmail, userMobile, userPassword) 
                                 VALUES ('$firstName', '$lastName', '$userEmail', '$userMobile', '$userPassword')";
                         $result = mysqli_query($conn, $sql);
                         $response['success'] = true;

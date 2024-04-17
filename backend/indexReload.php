@@ -5,7 +5,7 @@ include "dbconnect.php";
 
 if(isset($_SESSION["userID"])){
     $userID = $_SESSION['userID'];
-    $checkUserSQL = "SELECT * FROM `users` WHERE userID = '$userID'";
+    $checkUserSQL = "SELECT * FROM `user` WHERE userID = '$userID'";
     $checkUser = mysqli_query($conn, $checkUserSQL);
     $userData = mysqli_fetch_row($checkUser);
     $_SESSION['userID'] = $userData[0];

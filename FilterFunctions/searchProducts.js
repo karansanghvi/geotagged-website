@@ -24,7 +24,7 @@ function filterProducts(data, searchInput, minPrice, maxPrice, selectedCategorie
 
     if (selectedCategories.includes("all")) {
         return data.filter(product =>
-            product.title.toLowerCase().includes(searchInput) &&
+            product.productName.toLowerCase().includes(searchInput) &&
             (!minPrice || product.newPrice >= minPrice) &&
             (!maxPrice || product.newPrice <= maxPrice)
         );
@@ -32,7 +32,7 @@ function filterProducts(data, searchInput, minPrice, maxPrice, selectedCategorie
 
     return data.filter(product =>
         selectedCategories.includes(product.category) &&
-        product.title.toLowerCase().includes(searchInput) &&
+        product.productName.toLowerCase().includes(searchInput) &&
         (!minPrice || product.newPrice >= minPrice) &&
         (!maxPrice || product.newPrice <= maxPrice)
     );
@@ -52,8 +52,8 @@ function updateProducts(filteredProducts) {
             productCard.className = 'productCard';
             productCard.innerHTML = `
                 <div class="product">
-                    <img src="${product.imageLink}" alt="${product.title}">
-                    <h3>${product.title}</h3>
+                    <img src="${product.imageLink}" alt="${product.productName}">
+                    <h3>${product.productName}</h3>
                     <div class="productPrice">
                         <div class="product-grid">
                             <p class="prevPrice">₹${product.prevPrice}</p>
@@ -63,7 +63,7 @@ function updateProducts(filteredProducts) {
                         </div>
                     </div>
                     <p>Catgeory: ${product.category}</p>
-                    <p><a href="${product.pageLink}" target="_blank">View Details</a></p>
+                    <p><a href="${product.link}" target="_blank">View Details</a></p>
                 </div>
             `;
 

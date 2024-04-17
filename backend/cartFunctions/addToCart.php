@@ -10,11 +10,11 @@ $price = $_POST['price'];
 $tinyImage = $_POST['tinyImage'];
 $userID = $_SESSION['userID'];
 
-$checkSql = "SELECT * FROM cart WHERE productName = '$productName' AND userID = '$userID'";
+$checkSql = "SELECT * FROM carttable WHERE productName = '$productName' AND userID = '$userID'";
 $checkResult = mysqli_query($conn, $checkSql);
 
 if (mysqli_num_rows($checkResult) > 0) {
-    $updateSql = "UPDATE cart SET quantity = quantity + 1 WHERE productName = '$productName' AND userID = '$userID'";
+    $updateSql = "UPDATE carttable SET quantity = quantity + 1 WHERE productName = '$productName' AND userID = '$userID'";
     $updateResult = mysqli_query($conn, $updateSql);
 
     if ($updateResult) {
@@ -27,7 +27,7 @@ if (mysqli_num_rows($checkResult) > 0) {
         $response['sessionData'] = $_SESSION;
     }
 }else{
-    $insertSql = "INSERT INTO cart (productName, category, price, imageLink, userID, quantity) 
+    $insertSql = "INSERT INTO carttable (productName, category, price, imageLink, userID, quantity) 
                   VALUES ('$productName', '$category', '$price', '$tinyImage', '$userID', 1)";
     $insertResult = mysqli_query($conn, $insertSql);
 

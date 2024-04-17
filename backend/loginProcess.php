@@ -7,13 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     include "dbconnect.php";
     $userEmail = $_POST["email"];
     $userPassword = $_POST["password"];
-    $sql = "SELECT * from `users` where userEmail='$userEmail'";
+    $sql = "SELECT * from `user` where userEmail='$userEmail'";
     $result = mysqli_query($conn, $sql);
     $userData = mysqli_fetch_row($result);
 
     if (mysqli_num_rows($result) == 0) {
         $response['error'] = "User with this Email doesn't exist";
-    } else if ($userData[5] != $userPassword) {
+    } else if ($userData[4] != $userPassword) {
         $response['error'] = "Incorrect Password";
     } else {
         session_start();

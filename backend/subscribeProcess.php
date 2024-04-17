@@ -4,7 +4,7 @@ $response = array();
 include "dbconnect.php";
 
 function checkUserSubscribed($conn, $userID) {
-    $checkUserSQL = "SELECT * FROM `users` WHERE userID = '$userID' and is_subscribed = 1";
+    $checkUserSQL = "SELECT * FROM `user` WHERE userID = '$userID' and is_subscribed = 1";
     $checkUser = mysqli_query($conn, $checkUserSQL);
 
     if($checkUser && mysqli_num_rows($checkUser) == 1){
@@ -18,7 +18,7 @@ function checkUserSubscribed($conn, $userID) {
 if (isset($_SESSION['loggedIn'])) {
     $userID = $_SESSION['userID'];
     if (!checkUserSubscribed($conn, $userID)) {
-        $subscribeUserSQL = "UPDATE `users` SET `is_subscribed` = '1' WHERE userID = '$userID';";
+        $subscribeUserSQL = "UPDATE `user` SET `is_subscribed` = '1' WHERE userID = '$userID';";
         $result = mysqli_query($conn, $subscribeUserSQL);
         
         if ($result) {

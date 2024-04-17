@@ -1,0 +1,53 @@
+
+.container {
+    max-width: 1000px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+h1 {
+    margin-bottom: 20px;
+}
+.state-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.state-btn.selected {
+    background-color: hsl(12, 98%, 52%);
+    box-shadow: 0 0 10px hsl(12, 98%, 30%);
+    color: #fff;
+}
+.state-btn:hover {
+    opacity: 0.8;
+}
+#stateForm {
+    margin-top: 20px;
+}
+#stateSearch {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+}
+#stateForm button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(12, 98%, 52%);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+#stateForm button:hover {
+    background-color: hsl(12, 98%, 30%);
+}

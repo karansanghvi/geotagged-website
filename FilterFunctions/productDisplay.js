@@ -8,8 +8,8 @@ fetch('../backend/fetchProducts.php')
             productCard.className = 'productCard';
             productCard.innerHTML = `
                 <div class="product">
-                    <img src="${product.imageLink}" alt="${product.title}">
-                    <h3>${product.title}</h3>
+                    <img src="${product.imageLink}" alt="${product.productName}">
+                    <h3>${product.productName}</h3>
                     <div>
                         <div class="product-grid">
                             <p class="prevPrice">₹${product.prevPrice}</p>
@@ -19,7 +19,7 @@ fetch('../backend/fetchProducts.php')
                         </div>
                     </div>
                     <p>Catgeory: ${product.category}</p>
-                    <p><a href="${product.pageLink}" target="_blank">View Details</a></p>
+                    <p><a href="${product.link}" target="_blank">View Details</a></p>
                 </div>
             `;
             productsContainer.appendChild(productCard);

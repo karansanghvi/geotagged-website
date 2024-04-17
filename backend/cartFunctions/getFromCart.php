@@ -3,7 +3,7 @@ session_start();
 include "../dbconnect.php";
 
 $userID = $_SESSION["userID"];
-$sql = "SELECT * FROM `cart` WHERE userID='$userID'";
+$sql = "SELECT * FROM `carttable` WHERE userID='$userID'";
 $result = mysqli_query($conn, $sql);
 
 $response = array();

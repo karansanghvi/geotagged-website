@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productName = $_POST['productName'];
         $userID = $_SESSION["userID"];
         
-        $sql = "DELETE FROM `cart` WHERE userID='$userID' AND productName='$productName'";
+        $sql = "DELETE FROM `carttable` WHERE userID='$userID' AND productName='$productName'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {

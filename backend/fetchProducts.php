@@ -1,7 +1,7 @@
 <?php
 include "dbconnect.php";
 
-$sql = "SELECT * FROM `products`";
+$sql = "SELECT * FROM `product`";
 $result = mysqli_query($conn, $sql);
 
 $rows = array();

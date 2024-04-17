@@ -198,6 +198,12 @@ header nav ul li a.active {
     margin-top: 10px;
 }
 
+.statesForm{
+    display: none;
+    margin-left: 25%;
+    margin-top: -50px;
+}
+
 /* footer */
 .footer {
     background-color: hsla(12, 98%, 52%, 0.1);
@@ -233,7 +239,8 @@ header nav ul li a.active {
 
 .footer .footer-copyright {
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;

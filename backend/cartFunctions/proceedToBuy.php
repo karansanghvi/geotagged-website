@@ -5,7 +5,7 @@ $response = array();
 
 $userID = $_SESSION["userID"];
 
-$sql = "SELECT * from `cart` where userID = '$userID'";
+$sql = "SELECT * from `carttable` where userID = '$userID'";
 $result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result)==0){
